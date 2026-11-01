@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
+<policyconfig>
+  <vendor>Monolito Desktop</vendor>
+  <action id="org.monolito.Settings.directory">
+    <description>Join this computer to an Active Directory domain</description>
+    <description xml:lang="pt_BR">Ingressar este computador em um domínio Active Directory</description>
+    <message>Administrator authentication is required to join a domain.</message>
+    <message xml:lang="pt_BR">Autentique como administrador local para ingressar no domínio.</message>
+    <defaults><allow_any>no</allow_any><allow_inactive>no</allow_inactive><allow_active>auth_admin</allow_active></defaults>
+    <annotate key="org.freedesktop.policykit.exec.path">/usr/libexec/monolito-directory-helper</annotate>
+  </action>
+</policyconfig>

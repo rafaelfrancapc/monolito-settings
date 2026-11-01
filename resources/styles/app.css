@@ -1,0 +1,49 @@
+/* Monolito semantic tokens are supplied by theme.rs. Geometry: 4/8/12/16/24/32. */
+window.monolito.solid-csd { border: 1px solid @border; padding: 0; box-shadow: none; }
+window.monolito { background: @canvas; color: @text; }
+.monolito .titlebar { background: @canvas; padding: 0; min-height: 38px; border: none; box-shadow: none; }
+.monolito .brand { font-family: 'Montserrat Alternates', Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0; }
+.monolito button { background: @primary; color: @text; border: 1px solid @border; border-radius: 8px; padding: 8px 16px; box-shadow: none; text-shadow: none; transition: background 150ms ease; }
+.monolito button:hover { background: @secondary; }
+.monolito button:active { background: @subtle; }
+.monolito button:disabled { opacity: .5; }
+.monolito button:focus-visible, .monolito entry:focus-within, .monolito row:focus-visible { outline: 2px solid @accent; outline-offset: 2px; }
+.monolito button.primary { background: @accent; color: @on_accent; border-color: @accent; }
+.monolito button.primary:hover { opacity: .9; }
+.monolito button.window-control { min-width: 46px; min-height: 38px; padding: 0; border: 0; border-radius: 0; background: transparent; }
+.monolito button.window-control:hover { background: @secondary; }
+.monolito button.close:hover { background: #c42b1c; color: white; }
+.monolito .sidebar { background: @canvas; color: @text; border: none; padding: 24px 12px 16px; }
+.monolito .sidebar-title { font-size: 22px; font-weight: 700; margin: 0 12px 20px; }
+.monolito entry { background: @primary; color: @text; border: 1px solid @border; border-radius: 8px; min-height: 34px; padding: 2px 10px; box-shadow: none; }
+.monolito .search { margin: 0 0 16px; }
+.monolito .nav-list { background: transparent; color: @text; }
+.monolito .nav-label { color: @text; }
+.monolito .nav-item { color: @text; padding: 0; border-radius: 6px; margin: 2px 0; border: 0; }
+.monolito .nav-item > box { padding: 10px 15px; }
+.monolito .nav-item:hover { background: @secondary; }
+.monolito .nav-item:selected { background: @accent; color: @on_accent; }
+.monolito .nav-item:selected .nav-label, .monolito .nav-item:selected image { color: @on_accent; }
+.monolito .page { padding: 30px 32px 32px; }
+.monolito .page-title { font-size: 28px; font-weight: 700; letter-spacing: -.5px; }
+.monolito .section-title { font-size: 18px; font-weight: 600; margin-top: 8px; }
+.monolito .secondary { color: @muted; font-size: .92em; }
+.monolito .settings-card { background: @primary; border: 1px solid @border; border-radius: 8px; }
+.monolito .settings-row { padding: 18px 20px; min-height: 40px; }
+.monolito .settings-card .settings-row + .settings-row { border-top: 1px solid @border; }
+.monolito .row-title { font-weight: 500; }
+.monolito .hero { padding: 24px; border-radius: 16px; background: @subtle; }
+.monolito .hero-title { font-size: 22px; font-weight: 600; }
+.monolito .badge { padding: 4px 10px; border-radius: 8px; background: @secondary; color: @muted; font-size: .85em; }
+.monolito .preview { min-height: 150px; background: @subtle; border-radius: 12px; padding: 24px; }
+.monolito .preview-sidebar { background: @canvas; padding: 12px; border-radius: 8px; }
+.monolito .preview-content { background: @primary; padding: 16px; border-radius: 8px; }
+.monolito .preview-accent { background: @accent; min-height: 6px; border-radius: 3px; }
+.monolito .choice:checked { background: @accent; color: @on_accent; border-color: @accent; }
+.monolito .swatch { min-width: 32px; min-height: 32px; padding: 2px; border-radius: 50%; border: 3px solid transparent; }
+.monolito .swatch:checked { border-color: @text; }
+.monolito .swatch.blue { background: #2864BD; }.monolito .swatch.violet { background: #7040B0; }.monolito .swatch.green { background: #217346; }.monolito .swatch.terracotta { background: #A3482C; }
+.monolito .form { padding: 20px; }
+.monolito .notice { background: @subtle; padding: 12px 16px; border-radius: 8px; color: @text; }
+.monolito switch:checked { background: @accent; }
+.monolito .error { color: #c42b1c; }

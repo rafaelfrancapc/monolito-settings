@@ -1,0 +1,40 @@
+use crate::{backends::SystemInfo, components::*, i18n::tr};
+use gtk::prelude::*;
+pub fn build() -> (gtk::ScrolledWindow, gtk::Box) {
+    let (s, b) = page(
+        "Sistema",
+        "Informações do dispositivo, sistema operacional e sessão gráfica.",
+    );
+    b.append(&label("Lendo informações do sistema…", "secondary"));
+    (s, b)
+}
+pub fn populate(body: &gtk::Box, info: &SystemInfo) {
+    if let Some(last) = body.last_child() {
+        body.remove(&last);
+    }
+    let card = card();
+    for (title, value) in [
+        ("Nome do dispositivo", &info.hostname),
+        ("Distribuição", &info.distribution),
+        ("Kernel", &info.kernel),
+        ("Processador", &info.cpu),
+        ("Memória total", &info.memory),
+        ("Sessão gráfica", &info.session),
+        ("Desktop", &info.desktop),
+    ] {
+        let value = if value.is_empty() {
+            tr("Não disponível")
+        } else {
+            value.clone()
+        };
+        card.append(&row(title, &value, "system"));
+    }
+    body.append(&card);
+    body.append(&label("Integração com XFCE", "section-title"));
+    body.append(&label(&info.integration, "secondary"));
+    let card = crate::components::card();
+    for (key, value) in &info.xfce {
+        card.append(&row(key, value, "personalization"));
+    }
+    body.append(&card);
+}

@@ -1,0 +1,484 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Language: \n"
+
+#: src/pages/accounts.rs:97
+msgid "A autorização de administrador local será solicitada pelo sistema."
+msgstr ""
+
+#: src/backends/directory.rs:58
+msgid "A autorização foi cancelada ou recusada."
+msgstr ""
+
+#: src/pages/accounts.rs:35
+msgid "A operação foi interrompida."
+msgstr ""
+
+#: src/pages/accounts.rs:82
+msgid "Aceitar criptografia legada (allow_weak_crypto)"
+msgstr ""
+
+#: src/pages/accounts.rs:54
+msgid "Acessar trabalho ou escola"
+msgstr ""
+
+#: src/pages/home.rs:28
+msgid "Acesso à organização"
+msgstr ""
+
+#: src/pages/accounts.rs:57
+msgid "Active Directory"
+msgstr ""
+
+#: src/pages/accounts.rs:72 src/pages/accounts.rs:73
+msgid "Administrador do domínio"
+msgstr ""
+
+#: src/pages/personalization.rs:36
+msgid "Aparência"
+msgstr ""
+
+#: src/pages/home.rs:22
+msgid "Aparência da interface"
+msgstr ""
+
+#: src/pages/mod.rs:26
+msgid "Aplicativos instalados"
+msgstr ""
+
+#: src/navigation.rs:44
+msgid "Aplicativos instalados e associações de arquivos."
+msgstr ""
+
+#: src/pages/mod.rs:27
+msgid "Aplicativos padrão"
+msgstr ""
+
+#: src/pages/mod.rs:27
+msgid "Associações de arquivos"
+msgstr ""
+
+#: src/navigation.rs:72
+msgid "Atualizações"
+msgstr ""
+
+#: src/pages/mod.rs:45
+msgid "Atualizações do sistema"
+msgstr ""
+
+#: src/pages/personalization.rs:52
+msgid "Automático"
+msgstr ""
+
+#: src/navigation.rs:26
+msgid "Bluetooth, impressoras e dispositivos conectados."
+msgstr ""
+
+#: src/pages/home.rs:12
+msgid "Carregando informações…"
+msgstr ""
+
+#: src/pages/personalization.rs:44
+msgid "Claro, escuro ou conforme a preferência GTK da sessão"
+msgstr ""
+
+#: src/pages/mod.rs:16
+msgid "Conectar e gerenciar dispositivos"
+msgstr ""
+
+#: src/pages/mod.rs:22
+msgid "Conexões de trabalho"
+msgstr ""
+
+#: src/navigation.rs:32
+msgid "Conexões, Wi-Fi e preferências de rede."
+msgstr ""
+
+#: src/window.rs:34
+msgid "Configurações"
+msgstr ""
+
+#: src/pages/mod.rs:23
+msgid "Configurações de acesso à rede"
+msgstr ""
+
+#: src/pages/home.rs:18
+msgid "Configurações principais"
+msgstr ""
+
+#: src/pages/accounts.rs:129
+msgid "Confirme o ingresso antes de continuar."
+msgstr ""
+
+#: src/pages/accounts.rs:86
+msgid "Confirmo o ingresso deste computador no domínio informado."
+msgstr ""
+
+#: src/pages/home.rs:13
+msgid "Consultando o sistema"
+msgstr ""
+
+#: src/pages/accounts.rs:151
+msgid "Consultar vínculo atual"
+msgstr ""
+
+#: src/pages/accounts.rs:153
+msgid "Consulte o domínio configurado neste computador."
+msgstr ""
+
+#: src/pages/home.rs:29
+msgid "Contas e ingresso no Active Directory"
+msgstr ""
+
+#: src/pages/personalization.rs:79
+msgid "Cor aplicada aos itens selecionados e às ações principais"
+msgstr ""
+
+#: src/pages/personalization.rs:78
+msgid "Cor de destaque"
+msgstr ""
+
+#: src/pages/mod.rs:30
+msgid "Data e hora"
+msgstr ""
+
+#: src/navigation.rs:56
+msgid "Data, hora, região e idiomas do sistema."
+msgstr ""
+
+#: src/navigation.rs:74
+msgid "Disponibilidade e gerenciamento de atualizações."
+msgstr ""
+
+#: src/pages/system.rs:18
+msgid "Distribuição"
+msgstr ""
+
+#: src/pages/accounts.rs:66 src/pages/accounts.rs:67
+msgid "Domínio"
+msgstr ""
+
+#: src/pages/mod.rs:36
+msgid "Efeitos visuais"
+msgstr ""
+
+#: src/pages/mod.rs:10
+msgid "Em desenvolvimento — estes ajustes ainda não estão disponíveis."
+msgstr ""
+
+#: src/backends/directory.rs:56
+msgid "Entrada indisponível"
+msgstr ""
+
+#: src/pages/mod.rs:34
+msgid "Escala da interface"
+msgstr ""
+
+#: src/pages/personalization.rs:38
+msgid "Estas preferências afetam somente o Monolito Settings."
+msgstr ""
+
+#: src/window.rs:133
+msgid "Este computador"
+msgstr ""
+
+#: src/pages/personalization.rs:115
+msgid "Fonte da interface"
+msgstr ""
+
+#: src/pages/personalization.rs:116
+msgid "Fonte utilizada nos textos e controles"
+msgstr ""
+
+#: src/theme.rs:4
+msgid "GTK settings"
+msgstr ""
+
+#: src/pages/mod.rs:26
+msgid "Gerenciar programas"
+msgstr ""
+
+#: src/pages/home.rs:35
+msgid "Hardware, sistema e sessão gráfica"
+msgstr ""
+
+#: src/navigation.rs:54
+msgid "Hora e Idioma"
+msgstr ""
+
+#: src/pages/mod.rs:31
+msgid "Idioma de exibição e formatos"
+msgstr ""
+
+#: src/pages/mod.rs:31
+msgid "Idioma e região"
+msgstr ""
+
+#: src/pages/mod.rs:17
+msgid "Impressoras e scanners"
+msgstr ""
+
+#: src/pages/home.rs:34
+msgid "Informações do dispositivo"
+msgstr ""
+
+#: src/navigation.rs:20 src/pages/system.rs:6
+msgid "Informações do dispositivo, sistema operacional e sessão gráfica."
+msgstr ""
+
+#: src/backends/directory.rs:28
+msgid "Informe um domínio DNS válido, como empresa.exemplo.com"
+msgstr ""
+
+#: src/pages/accounts.rs:91
+msgid "Ingressar no domínio"
+msgstr ""
+
+#: src/backends/directory.rs:61
+msgid "Ingresso concluído. Encerre a sessão antes de usar sua conta de domínio."
+msgstr ""
+
+#: src/pages/accounts.rs:58
+msgid "Ingresso do dispositivo no domínio da organização."
+msgstr ""
+
+#: src/backends/directory.rs:65
+msgid "Ingresso não concluído. Verifique autorização, credenciais, DNS, horário e dependências. Nenhuma senha foi registrada."
+msgstr ""
+
+#: src/pages/accounts.rs:103
+msgid "Instale o auxiliar Monolito e as dependências de domínio para habilitar o ingresso. Consulte o README."
+msgstr ""
+
+#: src/pages/mod.rs:21
+msgid "Integração com NetworkManager prevista"
+msgstr ""
+
+#: src/pages/system.rs:33
+msgid "Integração com XFCE"
+msgstr ""
+
+#: src/pages/mod.rs:46
+msgid "Integração com o gerenciador de pacotes prevista"
+msgstr ""
+
+#: src/pages/mod.rs:42
+msgid "Integração prevista"
+msgstr ""
+
+#: src/state.rs:16
+msgid "Inter 10.5"
+msgstr ""
+
+#: src/navigation.rs:12 src/pages/home.rs:5
+msgid "Início"
+msgstr ""
+
+#: src/pages/system.rs:8
+msgid "Lendo informações do sistema…"
+msgstr ""
+
+#: src/pages/accounts.rs:90
+msgid "Localizar domínio"
+msgstr ""
+
+#: src/components/window_controls.rs:7
+msgid "Maximizar ou restaurar"
+msgstr ""
+
+#: src/pages/system.rs:21
+msgid "Memória total"
+msgstr ""
+
+#: src/window.rs:16
+msgid "Monolito Settings"
+msgstr ""
+
+#: src/pages/mod.rs:18
+msgid "Mouse e touchpad"
+msgstr ""
+
+#: src/pages/accounts.rs:25
+msgid "Nenhum domínio configurado."
+msgstr ""
+
+#: src/window.rs:79
+msgid "Nenhuma categoria encontrada"
+msgstr ""
+
+#: src/pages/system.rs:17
+msgid "Nome do dispositivo"
+msgstr ""
+
+#: src/pages/personalization.rs:139
+msgid "Nome do tema de ícones"
+msgstr ""
+
+#: src/pages/system.rs:26 src/pages/mod.rs:51
+msgid "Não disponível"
+msgstr ""
+
+#: src/pages/accounts.rs:27
+msgid "Não foi possível concluir"
+msgstr ""
+
+#: src/window.rs:145
+msgid "Não foi possível consultar o sistema."
+msgstr ""
+
+#: src/backends/directory.rs:51
+msgid "Não foi possível iniciar a autorização polkit."
+msgstr ""
+
+#: src/pages/personalization.rs:9
+msgid "Não foi possível salvar"
+msgstr ""
+
+#: src/pages/mod.rs:37
+msgid "O aplicativo respeita a preferência GTK por animações"
+msgstr ""
+
+#: src/backends/directory.rs:63
+msgid "O ingresso ocorreu, mas a configuração local falhou. Consulte o administrador antes de tentar novamente; o computador pode já pertencer ao domínio."
+msgstr ""
+
+#: src/pages/accounts.rs:16
+msgid "Operação em andamento…"
+msgstr ""
+
+#: src/pages/personalization.rs:131
+msgid "Os ícones de navegação mantêm a identidade Monolito"
+msgstr ""
+
+#: src/navigation.rs:50 src/pages/accounts.rs:46
+msgid "Perfil de usuário e acesso a organizações."
+msgstr ""
+
+#: src/pages/mod.rs:41
+msgid "Permissões de aplicativos"
+msgstr ""
+
+#: src/pages/accounts.rs:81
+msgid "Permite entrar como usuario em vez de usuario@dominio. Nomes locais iguais podem causar ambiguidade."
+msgstr ""
+
+#: src/navigation.rs:36 src/pages/personalization.rs:13
+msgid "Personalização"
+msgstr ""
+
+#: src/window.rs:36 src/window.rs:38
+msgid "Pesquisar configurações"
+msgstr ""
+
+#: src/backends/directory.rs:43
+msgid "Preencha domínio, administrador e senha."
+msgstr ""
+
+#: src/pages/accounts.rs:143
+msgid "Preencha um domínio válido, administrador e senha."
+msgstr ""
+
+#: src/pages/mod.rs:17
+msgid "Preferências de impressão"
+msgstr ""
+
+#: src/pages/personalization.rs:8
+msgid "Preferências do aplicativo salvas."
+msgstr ""
+
+#: src/navigation.rs:68
+msgid "Proteção, permissões e privacidade."
+msgstr ""
+
+#: src/pages/personalization.rs:25
+msgid "Prévia da interface"
+msgstr ""
+
+#: src/navigation.rs:62
+msgid "Recursos de acesso e adaptação da interface."
+msgstr ""
+
+#: src/navigation.rs:30
+msgid "Rede e Internet"
+msgstr ""
+
+#: src/pages/accounts.rs:84
+msgid "Reduz a proteção do Kerberos para compatibilidade com domínios antigos. Não reativa algoritmos removidos da biblioteca Kerberos."
+msgstr ""
+
+#: src/navigation.rs:66
+msgid "Segurança"
+msgstr ""
+
+#: src/pages/accounts.rs:76 src/pages/accounts.rs:77
+msgid "Senha do administrador"
+msgstr ""
+
+#: src/backends/xfce.rs:34
+msgid "Serviço xfconf indisponível nesta sessão"
+msgstr ""
+
+#: src/pages/system.rs:22
+msgid "Sessão gráfica"
+msgstr ""
+
+#: src/pages/mod.rs:30
+msgid "Sincronização e fuso horário"
+msgstr ""
+
+#: src/pages/mod.rs:34
+msgid "Tamanho do texto"
+msgstr ""
+
+#: src/pages/personalization.rs:43
+msgid "Tema da interface"
+msgstr ""
+
+#: src/pages/personalization.rs:130
+msgid "Tema de ícones"
+msgstr ""
+
+#: src/pages/personalization.rs:156
+msgid "Tema de ícones não encontrado nas pastas padrão."
+msgstr ""
+
+#: src/pages/home.rs:23
+msgid "Tema, cores e tipografia"
+msgstr ""
+
+#: src/navigation.rs:38 src/pages/personalization.rs:13
+msgid "Tema, cores e tipografia da interface."
+msgstr ""
+
+#: src/pages/accounts.rs:79
+msgid "Usar nome de usuário não qualificado"
+msgstr ""
+
+#: src/pages/accounts.rs:50
+msgid "Usuário da sessão atual"
+msgstr ""
+
+#: src/pages/mod.rs:18
+msgid "Velocidade e gestos"
+msgstr ""
+
+#: src/pages/personalization.rs:27
+msgid "Visualização do tema e da cor de destaque selecionados."
+msgstr ""
+
+#: src/navigation.rs:14 src/pages/home.rs:6
+msgid "Visão geral do dispositivo e acesso às configurações."
+msgstr ""
+
+#: src/pages/mod.rs:21
+msgid "Wi-Fi e Ethernet"
+msgstr ""
+
+#: src/backends/xfce.rs:32
+msgid "XFCE / xfconf"
+msgstr ""
+
+#: src/window.rs:138
+msgid "{}\n{} · {}"
+msgstr ""

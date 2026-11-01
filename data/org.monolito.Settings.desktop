@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=Monolito Settings
+Name[pt_BR]=Configurações do Monolito
+Comment=Personalize your Monolito Desktop
+Comment[pt_BR]=Personalize seu Monolito Desktop
+Exec=monolito-settings
+Icon=org.monolito.Settings
+Terminal=false
+Categories=Settings;DesktopSettings;
+StartupNotify=true
