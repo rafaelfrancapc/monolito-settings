@@ -32,7 +32,10 @@ jobs:
           echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
           echo "asset=$release_asset" >> "$GITHUB_OUTPUT"
           echo "title=Configurações ${release_tag#v}" >> "$GITHUB_OUTPUT"
-          if gh release view "$release_tag" --json assets --jq '.assets[].name' 2>/dev/null | grep -Fxq "$release_asset"; then
+          release_digest=$(gh api "repos/$GITHUB_REPOSITORY/releases/tags/$release_tag" \
+            --jq ".assets[] | select(.name == \"$release_asset\") | .digest" 2>/dev/null || true)
+          release_body=$(gh release view "$release_tag" --json body --jq '.body' 2>/dev/null || true)
+          if test -n "$release_digest" && printf '%s' "$release_body" | grep -Fq "${release_digest#sha256:}"; then
             echo "pending=false" >> "$GITHUB_OUTPUT"
           else
             echo "pending=true" >> "$GITHUB_OUTPUT"
@@ -51,6 +54,17 @@ jobs:
         run: |
           git checkout --detach "$RELEASE_TAG"
           ./scripts/build-deb.sh dist
+
+      - name: Registrar checksum do artefato
+        if: steps.release.outputs.pending == 'true'
+        env:
+          RELEASE_TAG: ${{ steps.release.outputs.tag }}
+          RELEASE_ASSET: ${{ steps.release.outputs.asset }}
+        run: |
+          release_sha=$(sha256sum "dist/$RELEASE_ASSET" | cut -d ' ' -f 1)
+          checksum_line=$(printf 'SHA-256: `%s`' "$release_sha")
+          sed -i "s|^SHA-256:.*|$checksum_line|" "docs/releases/$RELEASE_TAG.md"
+          grep -Fx "$checksum_line" "docs/releases/$RELEASE_TAG.md"
 
       - name: Criar release ou anexar pacote
         if: steps.release.outputs.pending == 'true'
