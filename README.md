@@ -66,10 +66,9 @@ checkout gravável pelo usuário como destino de uma política polkit.
 - Decoração própria com `GtkWindowHandle`, minimizar, maximizar/restaurar e fechar.
   O GTK/GDK cuida de arraste e duplo clique, sem manipulação manual de coordenadas.
 - Navegação por `GtkStack`, rolagem por página, atalhos reais no Início e foco por teclado.
-- No Cinnamon, modos claro/escuro/automático e accent color usam o portal XApp;
-  tema GTK, ícones, cursor e fonte usam `org.cinnamon.desktop.interface`.
-  Famílias descritas em `styles.d` são trocadas como um conjunto coordenado.
-  Alterações externas atualizam a interface. Fora do Cinnamon, o aplicativo mantém
+- No Cinnamon, cores e modo são definidos no painel Temas do Mint. O aplicativo observa
+  o portal XApp, `org.cinnamon.desktop.interface` e as famílias de `styles.d`, atualizando
+  automaticamente seu modo, cor, tema GTK, ícones, cursor e fonte. Fora do Cinnamon, mantém
   fallback local em `$XDG_CONFIG_HOME/monolito/settings.json`.
 - CSS com cores semânticas, ícones SVG originais incorporados e fontes com fallback.
   A fonte padrão de 10,5 pt corresponde a 14 px em 96 DPI e respeita a escala GTK.
@@ -82,7 +81,7 @@ checkout gravável pelo usuário como destino de uma política polkit.
   explicitamente. Controles diretos usam GIO/GSettings com validação de esquema/chave/tipo
   e sincronização de alterações externas.
 - Contas: todos os usuários locais (sem enumerar contas AD), gerenciamento pelo utilitário
-  nativo, hostname via D-Bus/polkit, descoberta AD, consulta de vínculo e ingresso.
+  nativo, hostname via D-Bus/polkit e editor administrativo de `sssd.conf` via GVfs.
 - Animações seguem `gtk-enable-animations`. Interface inicial em pt_BR, com caminho
   gettext para outros idiomas (`po/`).
 
@@ -180,7 +179,7 @@ Para testar a interface sem usar sua sessão pessoal, instale `xvfb`, `xauth`,
 ```
 
 O teste gráfico abre a janela, percorre as onze páginas, testa pesquisa com acentos,
-ausência de resultados, alternância de temas, maximizar/restaurar, minimizar/reativar,
+ausência de resultados, sincronização externa do tema, maximizar/restaurar, minimizar/reativar,
 dimensão compacta e fechar. Sem display, esse teste é ignorado no `cargo test` normal.
 O teste usa um diretório temporário de preferências.
 

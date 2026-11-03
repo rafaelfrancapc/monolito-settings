@@ -63,6 +63,30 @@ fn ui_workflow() {
         settle();
         assert_eq!(stack.visible_child_name().as_deref(), Some(c.id));
     }
+    let device_widgets = descendants(&stack.child_by_name("devices").unwrap());
+    let device_icons: Vec<_> = device_widgets
+        .iter()
+        .filter_map(|widget| widget.clone().downcast::<gtk::Image>().ok())
+        .map(|image| {
+            image
+                .icon_name()
+                .map(|name| name.to_string())
+                .unwrap_or_else(|| image.widget_name().to_string())
+        })
+        .collect();
+    for expected in [
+        "bluetooth-symbolic",
+        "printer-symbolic",
+        "drive-harddisk-symbolic",
+        "input-mouse-symbolic",
+        "input-keyboard-symbolic",
+    ] {
+        assert!(device_icons.iter().any(|icon| icon == expected));
+    }
+    assert!(device_widgets
+        .iter()
+        .filter_map(|widget| widget.clone().downcast::<gtk::Button>().ok())
+        .all(|button| button.label().as_deref() != Some("Abrir ↗")));
     let search = widgets
         .iter()
         .find_map(|x| x.clone().downcast::<gtk::SearchEntry>().ok())
@@ -107,27 +131,14 @@ fn ui_workflow() {
         )
         .expect("Cinnamon test schemas");
         settings.set_string("font-name", "Sans 11").unwrap();
-        let violet = widgets
-            .iter()
-            .filter_map(|w| w.clone().downcast::<gtk::ToggleButton>().ok())
-            .find(|button| button.has_css_class("violet"))
-            .unwrap();
-        violet.set_active(true);
-        settle();
-        let accent =
-            crate::backends::desktop_settings::setting("org.x.apps.portal", "accent-rgb", "s")
-                .unwrap();
-        assert_eq!(accent.string("accent-rgb"), "#7040B0");
-        assert_eq!(
-            crate::backends::desktop_settings::setting(
-                "org.cinnamon.desktop.interface",
-                "gtk-theme",
-                "s"
-            )
-            .unwrap()
-            .string("gtk-theme"),
-            "Adwaita-Violet"
-        );
+        crate::backends::desktop_settings::setting(
+            "org.cinnamon.desktop.interface",
+            "gtk-theme",
+            "s",
+        )
+        .unwrap()
+        .set_string("gtk-theme", "External-Dark")
+        .unwrap();
         let icons = crate::backends::desktop_settings::setting(
             "org.cinnamon.desktop.interface",
             "icon-theme",
@@ -135,27 +146,43 @@ fn ui_workflow() {
         )
         .unwrap();
         icons.set_string("icon-theme", "External-Icons").unwrap();
-        let portal =
+        crate::backends::desktop_settings::setting(
+            "org.cinnamon.desktop.interface",
+            "cursor-theme",
+            "s",
+        )
+        .unwrap()
+        .set_string("cursor-theme", "External-Cursor")
+        .unwrap();
+        let accent =
             crate::backends::desktop_settings::setting("org.x.apps.portal", "accent-rgb", "s")
                 .unwrap();
-        portal.set_string("accent-rgb", "#217346").unwrap();
+        accent.set_string("accent-rgb", "#217346").unwrap();
+        crate::backends::desktop_settings::setting("org.x.apps.portal", "color-scheme", "s")
+            .unwrap()
+            .set_string("color-scheme", "prefer-dark")
+            .unwrap();
         settle();
-        assert!(
-            widgets
-                .iter()
-                .filter_map(|w| w.clone().downcast::<gtk::FontButton>().ok())
-                .any(|f| f.font().as_deref() == Some("Sans 11")),
-            "External changes must update the native control"
-        );
-        assert!(widgets
+        let visible_values: Vec<_> = widgets
             .iter()
-            .filter_map(|w| w.clone().downcast::<gtk::Entry>().ok())
-            .any(|entry| entry.widget_name() == "system-theme-icons"
-                && entry.text() == "External-Icons"));
-        assert!(widgets
+            .filter_map(|w| w.clone().downcast::<gtk::Label>().ok())
+            .map(|label| label.text().to_string())
+            .collect();
+        for expected in [
+            "Escuro",
+            "External-Dark",
+            "External-Icons",
+            "External-Cursor",
+            "Sans 11",
+        ] {
+            assert!(visible_values.iter().any(|value| value == expected));
+        }
+        assert!(!visible_values
             .iter()
-            .filter_map(|w| w.clone().downcast::<gtk::ToggleButton>().ok())
-            .any(|button| button.has_css_class("green") && button.is_active()));
+            .any(|value| value == "Cor de destaque"));
+        assert!(visible_values
+            .iter()
+            .any(|value| value == "Cores, modo e temas"));
         assert!(crate::backends::desktop_settings::setting(
             "org.cinnamon.desktop.interface",
             "missing-key",
@@ -168,30 +195,6 @@ fn ui_workflow() {
             "b"
         )
         .is_none());
-    }
-    for text in ["Escuro", "Claro", "Automático"] {
-        let button = widgets
-            .iter()
-            .filter_map(|x| x.clone().downcast::<gtk::ToggleButton>().ok())
-            .find(|b| b.label().as_deref() == Some(text))
-            .unwrap();
-        button.set_active(true);
-        settle();
-        assert!(button.is_active());
-        if crate::backends::DesktopBackend::detect() == crate::backends::DesktopBackend::Cinnamon {
-            let portal = crate::backends::desktop_settings::setting(
-                "org.x.apps.portal",
-                "color-scheme",
-                "s",
-            )
-            .unwrap();
-            let expected = match text {
-                "Escuro" => "prefer-dark",
-                "Claro" => "prefer-light",
-                _ => "default",
-            };
-            assert_eq!(portal.string("color-scheme"), expected);
-        }
     }
     if let Ok(directory) = std::env::var("MONOLITO_SCREENSHOT_DIR") {
         std::fs::create_dir_all(&directory).unwrap();

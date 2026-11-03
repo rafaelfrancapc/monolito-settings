@@ -5,7 +5,7 @@ Priority: optional
 Architecture: @ARCH@
 Maintainer: Rafael França <rafaelfrancapc@users.noreply.github.com>
 Depends: libc6, libgtk-4-1 (>= 4.8), librsvg2-common, python3, policykit-1
-Recommends: cinnamon, cinnamon-control-center, xapps-common, mintlocale, language-selector-common, realmd, adcli, sssd, sssd-tools
+Recommends: cinnamon, cinnamon-control-center, xapps-common, mintlocale, language-selector-common, gvfs-backends, realmd, adcli, sssd, sssd-tools
 Suggests: mintupdate, mintinstall, mintsources, mintbackup, timeshift
 Provides: monolito-settings
 Description: configurações integradas para Cinnamon e XFCE

@@ -8,6 +8,7 @@ arch=${DEB_ARCH:-$(dpkg --print-architecture)}
 destination=${1:-dist}
 mkdir -p "$destination"
 stage=$(mktemp -d "${TMPDIR:-/tmp}/monolito-settings.XXXXXX")
+chmod 755 "$stage"
 trap 'rm -rf "$stage"' EXIT HUP INT TERM
 
 cargo build --release --locked

@@ -3,32 +3,28 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language: \n"
 
-#: src/backends/directory.rs:59
+#: src/backends/directory.rs:76
 msgid "A autorização foi cancelada ou recusada."
 msgstr ""
 
-#: src/backends/appearance.rs:192
-msgid "A cor de destaque está bloqueada pelo sistema."
-msgstr ""
-
-#: src/backends/appearance.rs:180
-msgid "A família de temas atual não oferece este modo."
-msgstr ""
-
-#: src/backends/appearance.rs:199
-msgid "A família de temas atual não oferece variações de cor."
+#: src/pages/personalization.rs:29
+msgid "A interface acompanha automaticamente as cores e o modo definidos no Mint."
 msgstr ""
 
 #: src/pages/accounts.rs:40
 msgid "A operação foi interrompida."
 msgstr ""
 
-#: src/backends/appearance.rs:166
-msgid "A preferência de modo está bloqueada pelo sistema."
+#: src/pages/integrations.rs:156
+msgid "Abrir configuração"
 msgstr ""
 
-#: src/backends/catalog.rs:458 src/pages/integrations.rs:122
+#: src/backends/catalog.rs:498 src/pages/integrations.rs:122
 msgid "Abrir no aplicativo do sistema"
+msgstr ""
+
+#: src/pages/accounts.rs:117
+msgid "Abrir no editor de texto padrão com autorização administrativa"
 msgstr ""
 
 #: src/pages/integrations.rs:121
@@ -83,16 +79,20 @@ msgstr ""
 msgid "Animações e transições"
 msgstr ""
 
-#: src/pages/personalization.rs:42
-msgid "Aparência"
+#: src/pages/personalization.rs:67
+msgid "Aparência atual"
 msgstr ""
 
 #: src/pages/home.rs:22
 msgid "Aparência da interface"
 msgstr ""
 
-#: src/pages/personalization.rs:22
+#: src/pages/personalization.rs:18
 msgid "Aparência do sistema e da interface."
+msgstr ""
+
+#: src/pages/personalization.rs:27
+msgid "Aparência sincronizada"
 msgstr ""
 
 #: src/pages/accounts.rs:77
@@ -115,16 +115,12 @@ msgstr ""
 msgid "Aplicativos, ícones, cursor e área de trabalho"
 msgstr ""
 
-#: src/pages/accounts.rs:155
+#: src/pages/accounts.rs:168
 msgid "Aplique o nome do computador antes de ingressar no domínio."
 msgstr ""
 
 #: src/backends/catalog.rs:220
 msgid "Arquivos recentes e histórico"
-msgstr ""
-
-#: src/pages/personalization.rs:33
-msgid "As alterações acompanham as preferências da sessão."
 msgstr ""
 
 #: src/backends/catalog.rs:184
@@ -139,8 +135,12 @@ msgstr ""
 msgid "Atualizações"
 msgstr ""
 
-#: src/pages/personalization.rs:64
+#: src/pages/personalization.rs:93
 msgid "Automático"
+msgstr ""
+
+#: src/pages/personalization.rs:86
+msgid "Automático / misto"
 msgstr ""
 
 #: src/backends/catalog.rs:76
@@ -199,10 +199,6 @@ msgstr ""
 msgid "Cinnamon / GSettings"
 msgstr ""
 
-#: src/pages/personalization.rs:55
-msgid "Claro, escuro ou conforme a preferência do sistema"
-msgstr ""
-
 #: src/pages/accounts.rs:101
 msgid "Compatibilidade RC4 (arcfour)"
 msgstr ""
@@ -215,7 +211,7 @@ msgstr ""
 msgid "Complementos do painel"
 msgstr ""
 
-#: src/pages/integrations.rs:125
+#: src/pages/integrations.rs:125 src/pages/integrations.rs:158
 msgid "Componente não instalado"
 msgstr ""
 
@@ -227,15 +223,15 @@ msgstr ""
 msgid "Conexões, Wi-Fi e preferências de rede."
 msgstr ""
 
-#: src/backends/catalog.rs:476
+#: src/backends/catalog.rs:516
 msgid "Configuração adicional do Cinnamon"
 msgstr ""
 
-#: src/backends/catalog.rs:519
+#: src/backends/catalog.rs:559
 msgid "Configuração adicional instalada"
 msgstr ""
 
-#: src/app.rs:3 src/window.rs:23 src/window.rs:41
+#: src/app.rs:3 src/window.rs:24 src/window.rs:42
 msgid "Configurações"
 msgstr ""
 
@@ -243,11 +239,11 @@ msgstr ""
 msgid "Configurações NVIDIA"
 msgstr ""
 
-#: src/pages/integrations.rs:130
+#: src/pages/integrations.rs:130 src/pages/integrations.rs:164
 msgid "Configurações abertas no aplicativo do sistema."
 msgstr ""
 
-#: src/pages/integrations.rs:163
+#: src/pages/integrations.rs:192
 msgid "Configurações do sistema"
 msgstr ""
 
@@ -255,7 +251,7 @@ msgstr ""
 msgid "Configurações principais"
 msgstr ""
 
-#: src/pages/accounts.rs:150
+#: src/pages/accounts.rs:163
 msgid "Confirme o ingresso antes de continuar."
 msgstr ""
 
@@ -263,19 +259,23 @@ msgstr ""
 msgid "Confirmo o ingresso deste computador no domínio informado."
 msgstr ""
 
+#: src/pages/personalization.rs:94 src/pages/personalization.rs:96
+msgid "Conforme a sessão GTK"
+msgstr ""
+
 #: src/pages/home.rs:13
 msgid "Consultando o sistema"
 msgstr ""
 
-#: src/pages/accounts.rs:179
+#: src/pages/accounts.rs:192
 msgid "Consultar vínculo atual"
 msgstr ""
 
-#: src/pages/accounts.rs:181
+#: src/pages/accounts.rs:194
 msgid "Consulte o domínio configurado neste computador."
 msgstr ""
 
-#: src/pages/accounts.rs:235
+#: src/pages/accounts.rs:248
 msgid "Contas de sistema"
 msgstr ""
 
@@ -287,24 +287,12 @@ msgstr ""
 msgid "Contas online"
 msgstr ""
 
-#: src/pages/personalization.rs:86
-msgid "Cor coordenada com a família de temas do Cinnamon"
-msgstr ""
-
-#: src/pages/personalization.rs:85
-msgid "Cor de destaque"
-msgstr ""
-
-#: src/pages/personalization.rs:260
-msgid "Cor de destaque atualizada."
+#: src/pages/personalization.rs:50
+msgid "Cores, modo e temas"
 msgstr ""
 
 #: src/pages/accounts.rs:104
 msgid "Criptografia legada reduz a segurança e depende do suporte Kerberos do sistema."
-msgstr ""
-
-#: src/pages/personalization.rs:149
-msgid "Cursor usado pela sessão"
 msgstr ""
 
 #: src/backends/catalog.rs:370
@@ -317,6 +305,10 @@ msgstr ""
 
 #: src/navigation.rs:56
 msgid "Data, hora, região e idiomas do sistema."
+msgstr ""
+
+#: src/pages/personalization.rs:51
+msgid "Defina cor, modo misto, claro ou escuro no painel do Mint"
 msgstr ""
 
 #: src/backends/desktop_settings.rs:136
@@ -359,11 +351,19 @@ msgstr ""
 msgid "Domínio corporativo"
 msgstr ""
 
+#: src/pages/accounts.rs:114
+msgid "Editar sssd.conf ↗"
+msgstr ""
+
+#: src/backends/directory.rs:54
+msgid "Editor administrativo aberto para sssd.conf."
+msgstr ""
+
 #: src/pages/integrations.rs:72
 msgid "Efeitos de janela"
 msgstr ""
 
-#: src/backends/directory.rs:57
+#: src/backends/directory.rs:74
 msgid "Entrada indisponível"
 msgstr ""
 
@@ -379,11 +379,7 @@ msgstr ""
 msgid "Esquemas do Cinnamon não disponíveis nesta sessão."
 msgstr ""
 
-#: src/backends/appearance.rs:252
-msgid "Esta preferência está bloqueada pelo sistema."
-msgstr ""
-
-#: src/window.rs:148
+#: src/window.rs:149
 msgid "Este computador"
 msgstr ""
 
@@ -399,16 +395,8 @@ msgstr ""
 msgid "Extensões do menu de contexto"
 msgstr ""
 
-#: src/pages/personalization.rs:289
-msgid "Fonte atualizada."
-msgstr ""
-
-#: src/backends/cinnamon.rs:16 src/pages/personalization.rs:121
+#: src/backends/cinnamon.rs:16 src/pages/personalization.rs:63
 msgid "Fonte da interface"
-msgstr ""
-
-#: src/pages/personalization.rs:122
-msgid "Fonte utilizada pelo desktop e pelos aplicativos GTK"
 msgstr ""
 
 #: src/backends/catalog.rs:361
@@ -447,7 +435,7 @@ msgstr ""
 msgid "Gerenciamento de cores"
 msgstr ""
 
-#: src/pages/accounts.rs:214
+#: src/pages/accounts.rs:227
 msgid "Gerenciar ↗"
 msgstr ""
 
@@ -487,7 +475,7 @@ msgstr ""
 msgid "Informações do sistema"
 msgstr ""
 
-#: src/backends/directory.rs:29
+#: src/backends/directory.rs:31
 msgid "Informe um domínio DNS válido, como empresa.exemplo.com"
 msgstr ""
 
@@ -495,7 +483,7 @@ msgstr ""
 msgid "Ingressar no domínio"
 msgstr ""
 
-#: src/backends/directory.rs:62
+#: src/backends/directory.rs:79
 msgid "Ingresso concluído. Encerre a sessão antes de usar sua conta de domínio."
 msgstr ""
 
@@ -503,7 +491,7 @@ msgstr ""
 msgid "Ingresso do dispositivo no domínio da organização."
 msgstr ""
 
-#: src/backends/directory.rs:66
+#: src/backends/directory.rs:83
 msgid "Ingresso não concluído. Verifique autorização, credenciais, DNS e horário."
 msgstr ""
 
@@ -515,7 +503,7 @@ msgstr ""
 msgid "Integração com XFCE"
 msgstr ""
 
-#: src/pages/accounts.rs:122
+#: src/pages/accounts.rs:128
 msgid "Integração de domínio não instalada."
 msgstr ""
 
@@ -575,12 +563,8 @@ msgstr ""
 msgid "Minha conta"
 msgstr ""
 
-#: src/pages/personalization.rs:54
-msgid "Modo de cor"
-msgstr ""
-
-#: src/pages/personalization.rs:231
-msgid "Modo de cor atualizado."
+#: src/pages/personalization.rs:59
+msgid "Modo atual"
 msgstr ""
 
 #: src/backends/catalog.rs:63
@@ -599,11 +583,11 @@ msgstr ""
 msgid "Nenhum domínio configurado."
 msgstr ""
 
-#: src/window.rs:88
+#: src/window.rs:89
 msgid "Nenhuma categoria encontrada"
 msgstr ""
 
-#: src/pages/accounts.rs:231
+#: src/pages/accounts.rs:244
 msgid "Nenhuma conta de usuário local"
 msgstr ""
 
@@ -643,6 +627,10 @@ msgstr ""
 msgid "Não foi possível abrir as configurações. Verifique o componente instalado."
 msgstr ""
 
+#: src/backends/directory.rs:51
+msgid "Não foi possível abrir o editor administrativo. Verifique GVfs e o editor de texto padrão."
+msgstr ""
+
 #: src/backends/desktop_settings.rs:63
 msgid "Não foi possível alterar o nome. Verifique a autorização administrativa."
 msgstr ""
@@ -655,24 +643,32 @@ msgstr ""
 msgid "Não foi possível consultar as contas locais."
 msgstr ""
 
-#: src/window.rs:160
+#: src/window.rs:161
 msgid "Não foi possível consultar o sistema."
 msgstr ""
 
-#: src/backends/directory.rs:52
+#: src/backends/directory.rs:69
 msgid "Não foi possível iniciar a autorização polkit."
 msgstr ""
 
-#: src/pages/integrations.rs:173
+#: src/pages/integrations.rs:150
 msgid "Não instalado"
+msgstr ""
+
+#: src/backends/directory.rs:43
+msgid "O arquivo sssd.conf ainda não existe."
 msgstr ""
 
 #: src/backends/catalog.rs:422
 msgid "O componente não está instalado nesta sessão."
 msgstr ""
 
-#: src/backends/directory.rs:64
+#: src/backends/directory.rs:81
 msgid "O ingresso ocorreu, mas a configuração local falhou. Consulte o administrador antes de tentar novamente; o computador pode já pertencer ao domínio."
+msgstr ""
+
+#: src/pages/personalization.rs:43
+msgid "O painel de temas do Cinnamon não está disponível nesta sessão."
 msgstr ""
 
 #: src/backends/desktop_settings.rs:81
@@ -685,10 +681,6 @@ msgstr ""
 
 #: src/backends/desktop_settings.rs:86
 msgid "O serviço não confirmou o nome solicitado."
-msgstr ""
-
-#: src/backends/appearance.rs:290
-msgid "O tema da área de trabalho está bloqueado pelo sistema."
 msgstr ""
 
 #: src/pages/accounts.rs:21
@@ -715,11 +707,11 @@ msgstr ""
 msgid "Perfis de monitores e impressoras"
 msgstr ""
 
-#: src/navigation.rs:36 src/pages/personalization.rs:22
+#: src/navigation.rs:36 src/pages/personalization.rs:18
 msgid "Personalização"
 msgstr ""
 
-#: src/window.rs:43 src/window.rs:45
+#: src/window.rs:44 src/window.rs:46
 msgid "Pesquisar configurações"
 msgstr ""
 
@@ -731,23 +723,19 @@ msgstr ""
 msgid "Posição, tamanho e comportamento"
 msgstr ""
 
-#: src/backends/directory.rs:44
+#: src/backends/directory.rs:61
 msgid "Preencha domínio, administrador e senha."
 msgstr ""
 
-#: src/pages/accounts.rs:171
+#: src/pages/accounts.rs:184
 msgid "Preencha um domínio válido, administrador e senha."
-msgstr ""
-
-#: src/pages/personalization.rs:48
-msgid "Preferências aplicadas somente a este aplicativo."
 msgstr ""
 
 #: src/backends/catalog.rs:52
 msgid "Preferências da sessão e do compositor"
 msgstr ""
 
-#: src/pages/integrations.rs:159
+#: src/pages/integrations.rs:188
 msgid "Preferências do desktop"
 msgstr ""
 
@@ -757,10 +745,6 @@ msgstr ""
 
 #: src/navigation.rs:68
 msgid "Proteção, permissões e privacidade."
-msgstr ""
-
-#: src/pages/personalization.rs:31
-msgid "Prévia da interface"
 msgstr ""
 
 #: src/backends/catalog.rs:154
@@ -811,12 +795,8 @@ msgstr ""
 msgid "Segurança"
 msgstr ""
 
-#: src/pages/accounts.rs:216
+#: src/pages/accounts.rs:229
 msgid "Selecione esta conta no gerenciador de usuários para alterar nome, senha e grupos"
-msgstr ""
-
-#: src/backends/appearance.rs:248
-msgid "Selecione um nome de tema válido."
 msgstr ""
 
 #: src/pages/accounts.rs:93 src/pages/accounts.rs:94
@@ -835,7 +815,7 @@ msgstr ""
 msgid "Sessão gráfica"
 msgstr ""
 
-#: src/pages/personalization.rs:46
+#: src/pages/personalization.rs:41
 msgid "Sincronizado com as configurações do sistema."
 msgstr ""
 
@@ -847,28 +827,20 @@ msgstr ""
 msgid "Teclado na tela"
 msgstr ""
 
-#: src/backends/cinnamon.rs:14
+#: src/backends/cinnamon.rs:14 src/pages/personalization.rs:60
 msgid "Tema GTK"
 msgstr ""
 
-#: src/pages/personalization.rs:137
-msgid "Tema GTK usado pela sessão"
-msgstr ""
-
-#: src/pages/personalization.rs:309
-msgid "Tema atualizado."
-msgstr ""
-
-#: src/backends/cinnamon.rs:15 src/pages/personalization.rs:142
+#: src/backends/cinnamon.rs:15 src/pages/personalization.rs:61
 msgid "Tema de ícones"
 msgstr ""
 
-#: src/pages/personalization.rs:148
+#: src/pages/personalization.rs:62
 msgid "Tema do ponteiro"
 msgstr ""
 
-#: src/pages/personalization.rs:136
-msgid "Tema dos aplicativos"
+#: src/pages/personalization.rs:47
+msgid "Tema do sistema"
 msgstr ""
 
 #: src/pages/home.rs:23
@@ -907,14 +879,6 @@ msgstr ""
 msgid "Use até 15 letras, números ou hífens, começando e terminando com letra ou número."
 msgstr ""
 
-#: src/backends/appearance.rs:203
-msgid "Use o painel Temas para selecionar uma família com cores coordenadas."
-msgstr ""
-
-#: src/backends/appearance.rs:172
-msgid "Use o painel Temas para selecionar uma família compatível com modos claro e escuro."
-msgstr ""
-
 #: src/backends/catalog.rs:278
 msgid "Usuários e grupos"
 msgstr ""
@@ -943,15 +907,15 @@ msgstr ""
 msgid "autorização"
 msgstr ""
 
-#: src/window.rs:153
+#: src/window.rs:154
 msgid "{}\n{} · {}"
 msgstr ""
 
-#: src/pages/accounts.rs:210
+#: src/pages/accounts.rs:223
 msgid "{} · UID {}"
 msgstr ""
 
-#: src/pages/integrations.rs:171
+#: src/pages/integrations.rs:160
 msgid "{} — {}"
 msgstr ""
 
@@ -963,10 +927,10 @@ msgstr ""
 msgid "Ícones e disposição"
 msgstr ""
 
-#: src/pages/personalization.rs:143
-msgid "Ícones usados pelo desktop e pelos aplicativos"
-msgstr ""
-
 #: src/backends/desktop_settings.rs:108
 msgid "é"
+msgstr ""
+
+#: src/pages/personalization.rs:115
+msgid "—"
 msgstr ""

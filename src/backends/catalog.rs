@@ -440,6 +440,46 @@ pub fn search_category(category: &str, query: &str) -> bool {
     })
 }
 
+pub fn icon_name(id: &str) -> &'static str {
+    match id {
+        "bluetooth" => "bluetooth-symbolic",
+        "printers" => "printer-symbolic",
+        "disks" => "drive-harddisk-symbolic",
+        "drivers" | "nvidia" | "wacom" => "applications-engineering-symbolic",
+        "color" => "preferences-color-symbolic",
+        "thunderbolt" => "thunderbolt-symbolic",
+        "mouse" | "gestures" => "input-mouse-symbolic",
+        "keyboard" | "input-method" => "input-keyboard-symbolic",
+        "display" | "nightlight" => "video-display-symbolic",
+        "sound" => "audio-speakers-symbolic",
+        "power" => "battery-symbolic",
+        "network" => "network-wireless-symbolic",
+        "themes" | "backgrounds" | "fonts" | "effects" => "preferences-desktop-theme-symbolic",
+        "users" | "user" | "account-details" | "online-accounts" => "system-users-symbolic",
+        "languages" => "preferences-desktop-locale-symbolic",
+        "firewall" | "privacy" | "screensaver" => "security-high-symbolic",
+        "updates" | "sources" | "packages" | "software" => "system-software-update-symbolic",
+        "default" | "startup" | "actions" => "application-x-executable-symbolic",
+        "calendar" => "x-office-calendar-symbolic",
+        "accessibility" => "preferences-desktop-accessibility-symbolic",
+        _ => "preferences-system-symbolic",
+    }
+}
+
+pub fn direct_icon(schema: &str) -> &'static str {
+    if schema.contains("touchpad") || schema.contains("mouse") {
+        "input-mouse-symbolic"
+    } else if schema.contains("notifications") {
+        "preferences-system-notifications-symbolic"
+    } else if schema.contains("a11y") || schema.contains("portal") {
+        "preferences-desktop-accessibility-symbolic"
+    } else if schema.contains("privacy") || schema.contains("screensaver") {
+        "security-high-symbolic"
+    } else {
+        "preferences-desktop-theme-symbolic"
+    }
+}
+
 pub fn catalog() -> Vec<Setting> {
     let mut result: Vec<_> = MODULES
         .iter()

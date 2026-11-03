@@ -29,7 +29,7 @@ visíveis, com “Não instalado” quando o destino não existe. O catálogo ta
 módulos Python adicionais, painéis C e launchers de configurações instalados. Extensões
 desconhecidas ficam em Sistema. A busca localiza categorias, recursos e ferramentas.
 
-Os botões “Abrir ↗” usam GIO para abrir o módulo ou aplicativo específico. Executáveis
+Os cards de configuração usam GIO para abrir o módulo ou aplicativo específico. Executáveis
 alternativos são resolvidos por disponibilidade (por exemplo, Blueberry/Blueman,
 GUFW/firewall-config e versões novas/antigas da administração de contas). Não há shell
 nem incorporação de janelas GTK3 dentro da janela GTK4. Aplicativos externos permanecem
@@ -43,7 +43,6 @@ Na sessão Cinnamon, as seguintes preferências são alteradas na própria janel
 - notificações e notificações sobre janelas em tela cheia;
 - mouse para canhotos, rolagem natural e localização do ponteiro;
 - toque para clicar, bloqueio ao digitar e rolagem natural do touchpad;
-- modos claro, escuro e automático, accent color, tema GTK, ícones, cursor e fonte;
 - animações, barras de rolagem, efeitos de janelas e animação de início da sessão;
 - ampliador, teclado na tela e leitor de tela;
 - arquivos recentes e bloqueio da proteção de tela.
@@ -54,10 +53,11 @@ o valor sincronizado nos dois sentidos e respeita a possibilidade de escrita da 
 acesso ao painel completo continua presente. Recursos como leitor de tela também
 dependem dos respectivos componentes da sessão.
 
-Modo e accent color usam `org.x.apps.portal`; GTK, ícones, cursor e fonte usam
-`org.cinnamon.desktop.interface`. O catálogo `styles.d` permite aplicar variantes
-coordenadas de GTK, ícones, Cinnamon e cursor. Quando a família não oferece uma
-variante, a interface encaminha ao painel Temas. Não há subprocessos `gsettings`.
+O card inteiro “Cores, modo e temas” abre o painel Temas do Mint, onde ficam accent
+color e os modos misto, claro e escuro. O aplicativo observa `org.x.apps.portal`,
+`org.cinnamon.desktop.interface`, `org.cinnamon.theme` e o catálogo `styles.d` para
+acompanhar automaticamente modo, cor, GTK, ícones, cursor e fonte. Não há subprocessos
+`gsettings` nem um segundo seletor de cor concorrente.
 
 Idiomas e pacotes de idioma abrem `mintlocale`, com fallback para
 `gnome-language-selector`. A instalação e atualização dos language packs permanecem
@@ -75,6 +75,10 @@ O limiar segue `UID_MIN` de `/etc/login.defs` (fallback 1000).
 grupos ou remover/criar usuários. O aplicativo não lê senhas nem arquivos shadow.
 Não existe parâmetro portátil para pré-selecionar uma conta em todas as versões do
 gerenciador nativo.
+
+“Editar sssd.conf” abre `admin:///etc/sssd/sssd.conf` no editor de texto padrão. O
+backend administrativo do GVfs solicita autorização e evita executar o editor inteiro
+como root. Se o arquivo ainda não existir, o atalho informa essa condição sem criá-lo.
 
 O ingresso AD preserva descoberta, consulta de vínculo, confirmação, nomes não
 qualificados, polkit, backups e tratamento de falhas parciais. A interface apresenta

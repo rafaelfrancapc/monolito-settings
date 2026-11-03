@@ -1,9 +1,11 @@
+use gtk::prelude::*;
 use serde::Serialize;
 use std::{
     io::Write,
     process::{Command, Stdio},
 };
 pub const HELPER: &str = "/usr/libexec/monolito-directory-helper";
+pub const SSSD_CONFIG: &str = "/etc/sssd/sssd.conf";
 #[derive(Serialize)]
 pub struct JoinRequest {
     pub domain: String,
@@ -35,6 +37,21 @@ pub fn status() -> Result<String, String> {
 }
 pub fn available() -> bool {
     std::path::Path::new(HELPER).is_file()
+}
+pub fn open_sssd_editor() -> Result<String, String> {
+    if !std::path::Path::new(SSSD_CONFIG).is_file() {
+        return Err("O arquivo sssd.conf ainda não existe.".into());
+    }
+    let context = gtk::gdk::Display::default().map(|display| display.app_launch_context());
+    gtk::gio::AppInfo::launch_default_for_uri(
+        "admin:///etc/sssd/sssd.conf",
+        context.as_ref(),
+    )
+    .map_err(|_| {
+        "Não foi possível abrir o editor administrativo. Verifique GVfs e o editor de texto padrão."
+            .to_string()
+    })?;
+    Ok("Editor administrativo aberto para sssd.conf.".into())
 }
 pub fn join(request: JoinRequest) -> Result<String, String> {
     if !valid_domain(&request.domain)

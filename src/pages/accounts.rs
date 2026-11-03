@@ -111,9 +111,14 @@ pub fn build() -> gtk::ScrolledWindow {
     let actions = gtk::Box::new(gtk::Orientation::Horizontal, 8);
     let discover = button("Localizar domínio");
     let join = button("Ingressar no domínio");
+    let edit_sssd = button("Editar sssd.conf ↗");
+    edit_sssd.set_tooltip_text(Some(&tr(
+        "Abrir no editor de texto padrão com autorização administrativa",
+    )));
     join.add_css_class("primary");
     actions.append(&discover);
     actions.append(&join);
+    actions.append(&edit_sssd);
     form.append(&actions);
     let status = label("", "secondary");
     form.append(&status);
@@ -121,6 +126,13 @@ pub fn build() -> gtk::ScrolledWindow {
         join.set_sensitive(false);
         status.set_text(&tr("Integração de domínio não instalada."));
     }
+    let edit_status = status.clone();
+    edit_sssd.connect_clicked(move |_| {
+        edit_status.set_text(&match directory::open_sssd_editor() {
+            Ok(message) => tr(&message),
+            Err(error) => tr(&error),
+        });
+    });
     let buttons = vec![discover.clone(), join.clone(), rename.clone()];
     let (s, h, bs) = (status.clone(), hostname.clone(), buttons.clone());
     rename.connect_clicked(move |_| {

@@ -4,14 +4,14 @@
 
 Validação em contêiner Debian 13 com GTK 4.18.6 e Rust 1.85.1:
 
-- Formatação, compilação e testes Rust passaram (7 testes; 2 testes de integração executados separadamente).
+- Formatação, compilação e testes Rust passaram (8 testes; 2 testes de integração executados separadamente).
 - Teste de hostname em D-Bus privado passou: nome permanente/ativo, confirmação,
   autorização recusada e falha parcial. Não utiliza o barramento de sistema.
 - Oito testes Python passaram, incluindo a opção RC4 independente e os testes de rollback.
 - O teste gráfico passou em XFCE/X11 e com detecção Cinnamon e esquemas reais
   cinnamon-desktop 6.4.1. O backend GSettings em memória valida alterações em ambas
-  as direções sem gravar preferências de usuário. Também cobre modo claro/escuro,
-  accent color, tema coordenado, ícones e fonte externa.
+  as direções sem gravar preferências de usuário. Também cobre a observação externa de
+  modo claro/escuro, cor, tema GTK, ícones e fonte, sem seletor de cor próprio.
 - O pacote `monolito-settings_0.2.0_amd64.deb` foi inspecionado e passou por ciclo
   de desempacotamento/remoção em Debian trixie. O `dpkg-divert` ocultou o launcher
   principal do Cinnamon e restaurou seu conteúdo original na remoção.
@@ -68,16 +68,15 @@ impõe Cairo. O teste gráfico também passou com o renderer padrão.
 - O teste de instalação usa uma árvore temporária; não ingressa o contêiner em AD,
   não instala políticas na sessão do usuário e não altera seus arquivos de sistema.
 - Não foi testado o tema Chicago95 nem o hardware da máquina Arch descrita no anexo.
-- As outras categorias continuam identificadas como em desenvolvimento; não há
-  validação de operações que ainda não estão implementadas.
+- Ferramentas externas ausentes no contêiner aparecem desabilitadas e continuam
+  dependendo dos pacotes correspondentes no Linux Mint.
 
 ## Refinamento visual e editorial
 
 - Removidos o texto da barra superior e o rodapé da navegação com marca/versão.
 - Item selecionado com fundo opaco na cor de destaque e texto/ícone no token
-  `on_accent`, sem faixa lateral. Os botões de tema seguem o mesmo tratamento.
-- Marca textual na prévia: `monolito`, Montserrat Alternates Bold, em minúsculas.
-  A família e o peso da fonte incluída foram confirmados com `fc-match` e `fc-scan`.
+  `on_accent`, sem faixa lateral. A aparência segue automaticamente o Mint.
+- A prévia não contém marca textual e usa apenas tipografia de interface com fallback.
 - Descrições e atalhos revisados para linguagem funcional e profissional.
 - `cargo fmt --check`, `cargo check --locked`, compilação normal/release e os
   três testes Rust passaram. O teste gráfico existente passou separadamente.
@@ -85,4 +84,4 @@ impõe Cairo. O teste gráfico também passou com o renderer padrão.
 - A barra sem título manteve o duplo clique para maximizar/restaurar e o arraste
   no XFWM: janela maximizada em 1400 × 900 e restaurada em 1100 × 720;
   arraste confirmado até (150, 80).
-- Instalação em árvore temporária validada, incluindo fonte e licença OFL.
+- Instalação em árvore temporária validada, incluindo executável, ícone e integrações.

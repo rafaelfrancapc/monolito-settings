@@ -134,18 +134,47 @@ pub fn launch_button(target: catalog::Target, status: &gtk::Label) -> gtk::Butto
     b
 }
 
+pub fn launch_card(
+    title: &str,
+    description: &str,
+    icon_name: &str,
+    target: catalog::Target,
+    status: &gtk::Label,
+) -> gtk::Button {
+    let row = system_row(title, description, icon_name);
+    let available = target.available();
+    if available {
+        let next = icon("chevron", 16);
+        row.append(&next);
+    } else {
+        row.append(&label("Não instalado", "badge"));
+    }
+    let button = gtk::Button::new();
+    button.set_child(Some(&row));
+    button.set_sensitive(available);
+    button.set_tooltip_text(Some(&tr(if available {
+        "Abrir configuração"
+    } else {
+        "Componente não instalado"
+    })));
+    accessible(&button, &format!("{} — {}", tr("Abrir"), tr(title)));
+    let status = status.clone();
+    button.connect_clicked(move |_| {
+        status.set_text(&match target.launch() {
+            Ok(()) => tr("Configurações abertas no aplicativo do sistema."),
+            Err(error) => tr(&error),
+        });
+    });
+    button
+}
+
 pub fn append(body: &gtk::Box, category: &str) {
     let status = label("", "secondary");
-    let icon_name = crate::navigation::CATEGORIES
-        .iter()
-        .find(|c| c.id == category)
-        .map(|c| c.icon)
-        .unwrap_or("system");
     if DesktopBackend::detect() == DesktopBackend::Cinnamon {
         let direct = card();
         for (_, title, schema, key) in SWITCHES.iter().filter(|s| s.0 == category) {
             if let Some(settings) = desktop_settings::setting(schema, key, "b") {
-                let r = row(title, "", icon_name);
+                let r = system_row(title, "", catalog::direct_icon(schema));
                 let switch = gtk::Switch::new();
                 switch.set_widget_name(&format!("{schema}/{key}"));
                 switch.set_valign(gtk::Align::Center);
@@ -164,16 +193,15 @@ pub fn append(body: &gtk::Box, category: &str) {
     let routes = card();
     for setting in catalog::catalog()
         .into_iter()
-        .filter(|s| s.category == category)
+        .filter(|s| s.category == category && !(category == "personalization" && s.id == "themes"))
     {
-        let r = row(&setting.title, &setting.description, icon_name);
-        let b = launch_button(setting.target, &status);
-        accessible(&b, &format!("{} — {}", tr("Abrir"), tr(&setting.title)));
-        if !b.is_sensitive() {
-            b.set_label(&tr("Não instalado"));
-        }
-        r.append(&b);
-        routes.append(&r);
+        routes.append(&launch_card(
+            &setting.title,
+            &setting.description,
+            catalog::icon_name(&setting.id),
+            setting.target,
+            &status,
+        ));
     }
     body.append(&routes);
     body.append(&status);

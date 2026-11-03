@@ -13,6 +13,7 @@ pub fn build(app: &gtk::Application) -> gtk::ApplicationWindow {
         .then(SystemAppearance::detect)
         .flatten();
     let mut preferences = Preferences::load();
+    preferences.theme = "auto".into();
     if let Some(system) = &appearance {
         system.sync_preferences(&mut preferences);
     }
@@ -24,7 +25,7 @@ pub fn build(app: &gtk::Application) -> gtk::ApplicationWindow {
         .default_width(1100)
         .default_height(720)
         .build();
-    window.add_css_class("monolito");
+    window.add_css_class("settings-app");
     window.set_size_request(760, 520);
     let titlebar = gtk::Box::new(gtk::Orientation::Horizontal, 0);
     titlebar.add_css_class("titlebar");

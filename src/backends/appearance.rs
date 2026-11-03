@@ -16,7 +16,6 @@ struct StyleFile {
 #[derive(Clone, Debug, Deserialize)]
 struct Style {
     #[allow(dead_code)]
-    name: String,
     #[serde(default)]
     mixed: Vec<Variant>,
     #[serde(default)]
@@ -27,7 +26,6 @@ struct Style {
 
 #[derive(Clone, Debug, Deserialize)]
 struct Variant {
-    name: String,
     #[serde(default)]
     themes: Option<String>,
     #[serde(default)]
@@ -39,8 +37,6 @@ struct Variant {
     #[serde(default)]
     cursor: Option<String>,
     color: String,
-    #[serde(default)]
-    default: Option<serde_json::Value>,
 }
 
 impl Variant {
@@ -55,11 +51,6 @@ impl Variant {
     }
     fn cursor(&self) -> Option<&str> {
         self.cursor.as_deref().or(self.themes.as_deref())
-    }
-    fn is_default(&self) -> bool {
-        self.default
-            .as_ref()
-            .is_some_and(|value| value.as_bool() == Some(true) || value.as_str() == Some("true"))
     }
 }
 
@@ -150,75 +141,6 @@ impl SystemAppearance {
     pub fn font(&self) -> String {
         self.interface.string("font-name").into()
     }
-    pub fn accent_available(&self) -> bool {
-        self.accent_portal.is_some() || self.active_variant().is_some()
-    }
-
-    pub fn set_mode(&self, mode: &str) -> Result<(), String> {
-        if let Some(portal) = &self.portal {
-            let value = match mode {
-                "dark" => "prefer-dark",
-                "light" => "prefer-light",
-                _ => "default",
-            };
-            portal
-                .set_string("color-scheme", value)
-                .map_err(|_| "A preferência de modo está bloqueada pelo sistema.")?;
-        }
-        if mode == "auto" {
-            return Ok(());
-        }
-        let Some((style_index, _, active)) = self.active_variant() else {
-            return Err("Use o painel Temas para selecionar uma família compatível com modos claro e escuro.".into());
-        };
-        let variants = self.styles[style_index].variants(mode);
-        let selected = variants
-            .iter()
-            .find(|variant| variant.name == active.name)
-            .or_else(|| variants.iter().find(|variant| variant.is_default()))
-            .or_else(|| variants.first())
-            .ok_or("A família de temas atual não oferece este modo.")?;
-        self.apply_variant(selected)
-    }
-
-    pub fn set_accent(&self, accent: &str) -> Result<(), String> {
-        let target = accent_rgb(accent);
-        if let Some(settings) = &self.accent_portal {
-            settings
-                .set_string(
-                    "accent-rgb",
-                    &format!("#{:02X}{:02X}{:02X}", target.0, target.1, target.2),
-                )
-                .map_err(|_| "A cor de destaque está bloqueada pelo sistema.")?;
-        }
-        if let Some((style_index, mode, _)) = self.active_variant() {
-            let selected = self.styles[style_index]
-                .variants(mode)
-                .iter()
-                .min_by_key(|variant| color_distance(parse_color(&variant.color), target))
-                .ok_or("A família de temas atual não oferece variações de cor.")?;
-            self.apply_variant(selected)?;
-        } else if self.accent_portal.is_none() {
-            return Err(
-                "Use o painel Temas para selecionar uma família com cores coordenadas.".into(),
-            );
-        }
-        Ok(())
-    }
-
-    pub fn set_gtk_theme(&self, value: &str) -> Result<(), String> {
-        self.set_string("gtk-theme", value)
-    }
-    pub fn set_icon_theme(&self, value: &str) -> Result<(), String> {
-        self.set_string("icon-theme", value)
-    }
-    pub fn set_cursor_theme(&self, value: &str) -> Result<(), String> {
-        self.set_string("cursor-theme", value)
-    }
-    pub fn set_font(&self, value: &str) -> Result<(), String> {
-        self.set_string("font-name", value)
-    }
-
     pub fn connect_changed<F: Fn() + Clone + 'static>(&self, callback: F) {
         for key in ["gtk-theme", "icon-theme", "cursor-theme", "font-name"] {
             self.interface.connect_changed(Some(key), {
@@ -243,15 +165,6 @@ impl SystemAppearance {
         }
     }
 
-    fn set_string(&self, key: &str, value: &str) -> Result<(), String> {
-        if value.is_empty() || value.contains('/') {
-            return Err("Selecione um nome de tema válido.".into());
-        }
-        self.interface
-            .set_string(key, value)
-            .map_err(|_| "Esta preferência está bloqueada pelo sistema.".into())
-    }
-
     fn active_variant(&self) -> Option<(usize, &'static str, &Variant)> {
         let gtk = self.interface.string("gtk-theme");
         let icons = self.interface.string("icon-theme");
@@ -272,24 +185,6 @@ impl SystemAppearance {
             }
         }
         None
-    }
-
-    fn apply_variant(&self, variant: &Variant) -> Result<(), String> {
-        for (key, value) in [
-            ("gtk-theme", variant.gtk()),
-            ("icon-theme", variant.icons()),
-            ("cursor-theme", variant.cursor()),
-        ] {
-            if let Some(value) = value {
-                self.set_string(key, value)?;
-            }
-        }
-        if let (Some(settings), Some(value)) = (&self.cinnamon, variant.cinnamon()) {
-            settings
-                .set_string("name", value)
-                .map_err(|_| "O tema da área de trabalho está bloqueado pelo sistema.")?;
-        }
-        Ok(())
     }
 }
 
@@ -370,7 +265,6 @@ mod tests {
         )
         .unwrap();
         assert_eq!(file.styles[0].light[1].cursor(), Some("Bibata"));
-        assert!(file.styles[0].light[0].is_default());
         assert_eq!(accent_for_color("#1f7548"), "green");
     }
 }
