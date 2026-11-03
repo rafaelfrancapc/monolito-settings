@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+target=/usr/share/applications/cinnamon-settings.desktop
+divert=/usr/share/applications/cinnamon-settings.desktop.cinnamon
+if [ "$1" = install ] || [ "$1" = upgrade ]; then
+    dpkg-divert --package monolito-settings --add --rename --divert "$divert" "$target"
+fi
+exit 0

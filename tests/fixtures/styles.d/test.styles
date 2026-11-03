@@ -1,0 +1,20 @@
+{
+  "styles": [
+    {
+      "name": "Test",
+      "default": "light",
+      "light": [
+        {"name": "blue", "gtk": "Adwaita", "icons": "gnome", "cursor": "Adwaita", "color": "#2864BD", "default": "true"},
+        {"name": "violet", "gtk": "Adwaita-Violet", "icons": "gnome-violet", "cursor": "Adwaita", "color": "#7040B0"},
+        {"name": "green", "gtk": "Adwaita-Green", "icons": "gnome-green", "cursor": "Adwaita", "color": "#217346"},
+        {"name": "terracotta", "gtk": "Adwaita-Orange", "icons": "gnome-orange", "cursor": "Adwaita", "color": "#A3482C"}
+      ],
+      "dark": [
+        {"name": "blue", "gtk": "Adwaita-dark", "icons": "gnome", "cursor": "Adwaita", "color": "#2864BD", "default": "true"},
+        {"name": "violet", "gtk": "Adwaita-Violet-dark", "icons": "gnome-violet", "cursor": "Adwaita", "color": "#7040B0"},
+        {"name": "green", "gtk": "Adwaita-Green-dark", "icons": "gnome-green", "cursor": "Adwaita", "color": "#217346"},
+        {"name": "terracotta", "gtk": "Adwaita-Orange-dark", "icons": "gnome-orange", "cursor": "Adwaita", "color": "#A3482C"}
+      ]
+    }
+  ]
+}

@@ -1,10 +1,10 @@
 [package]
 name = "monolito-settings"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 rust-version = "1.83"
 license = "GPL-3.0-or-later"
-description = "Configurações do Monolito Desktop para XFCE"
+description = "Configurações do sistema e desktop para Cinnamon e XFCE"
 
 [dependencies]
 gtk = { package = "gtk4", version = "0.9", features = ["v4_8"] }

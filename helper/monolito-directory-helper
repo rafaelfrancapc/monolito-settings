@@ -27,7 +27,7 @@ def valid_domain(value):
 
 
 def validate(data):
-    if not isinstance(data, dict) or set(data) != {
+    if not isinstance(data, dict) or set(data) - {'allow_rc4'} != {
         'domain', 'administrator', 'password', 'unqualified_names', 'allow_weak_crypto'
     }:
         raise ValueError('request')
@@ -39,7 +39,8 @@ def validate(data):
     password = data['password']
     if not isinstance(password, str) or not password or len(password) > 4096 or any(c in password for c in '\n\r\0'):
         raise ValueError('password')
-    for key in ['unqualified_names', 'allow_weak_crypto']:
+    data.setdefault('allow_rc4', False)
+    for key in ['unqualified_names', 'allow_weak_crypto', 'allow_rc4']:
         if type(data[key]) is not bool:
             raise ValueError(key)
     return data
@@ -57,21 +58,29 @@ def sssd_config(text, domain, unqualified):
     return out.getvalue()
 
 
-def kerberos_config(text):
+def kerberos_config(text, allow_weak_crypto=True, allow_rc4=False):
     # Preserve all unrelated Kerberos syntax, including nested realm stanzas.
     lines = text.splitlines(keepends=True)
+    options = {}
+    if allow_weak_crypto:
+        options['allow_weak_crypto'] = 'true'
+    if allow_rc4:
+        options['allow_rc4'] = 'true'
+    if not options:
+        return text
+    additions = ''.join(f'    {key} = {value}\n' for key, value in options.items())
     sections = [(i, re.match(r'^\s*\[([^]]+)\]', line)) for i, line in enumerate(lines)]
     headers = [(i, m.group(1).strip().lower()) for i, m in sections if m]
     starts = [i for i, name in headers if name == 'libdefaults']
     if len(starts) > 1:
         raise ValueError('Ambiguous libdefaults')
     if not starts:
-        return text.rstrip() + '\n\n[libdefaults]\n    allow_weak_crypto = true\n'
+        return text.rstrip() + '\n\n[libdefaults]\n' + additions
     start = starts[0]
     end = next((i for i, _ in headers if i > start), len(lines))
     segment = [s for s in lines[start + 1:end]
-               if not re.match(r'^\s*allow_weak_crypto\s*=', s, re.I)]
-    return ''.join(lines[:start + 1]) + '    allow_weak_crypto = true\n' + ''.join(segment) + ''.join(lines[end:])
+               if not any(re.match(r'^\s*' + key + r'\s*=', s, re.I) for key in options)]
+    return ''.join(lines[:start + 1]).rstrip('\n') + '\n' + additions + ''.join(segment) + ''.join(lines[end:])
 
 
 def safe_read(path):
@@ -125,10 +134,10 @@ def join_locked(data):
     old_sssd = None
     joined = False
     try:
-        if data['allow_weak_crypto']:
+        if data['allow_weak_crypto'] or data.get('allow_rc4', False):
             old_krb = safe_read(KRB5)
             atomic_write(backup / 'krb5.conf', old_krb[0], 0o600)
-            atomic_write(KRB5, kerberos_config(old_krb[0]), old_krb[1])
+            atomic_write(KRB5, kerberos_config(old_krb[0], data['allow_weak_crypto'], data.get('allow_rc4', False)), old_krb[1])
         command(['/usr/bin/realm', 'join', '--client-software=sssd', '--membership-software=adcli',
                  '--user=' + data['administrator'], data['domain']], input=(data['password'] + '\n').encode())
         joined = True

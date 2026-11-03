@@ -45,6 +45,19 @@ class DirectoryTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             m.sssd_config('[sssd]\n', 'example.com', True)
 
+    def test_rc4_is_opt_in_and_preserves_other_crypto_policy(self):
+        original = '[libdefaults]\n allow_weak_crypto = false\n permitted_enctypes = aes256-cts-hmac-sha1-96\n[realms]\n EXAMPLE.COM = {\n  kdc = dc.example.com\n }\n'
+        self.assertEqual(m.kerberos_config(original, False, False), original)
+        updated = m.kerberos_config(original, False, True)
+        self.assertIn('allow_rc4 = true', updated)
+        self.assertIn('allow_weak_crypto = false', updated)
+        self.assertIn('permitted_enctypes = aes256-cts-hmac-sha1-96', updated)
+        self.assertEqual(updated, m.kerberos_config(updated, False, True))
+        self.assertEqual(original.split('[realms]')[1], updated.split('[realms]')[1])
+        self.assertFalse(m.validate(request())['allow_rc4'])
+        with self.assertRaises(ValueError):
+            m.validate({**request(), 'allow_rc4': 'true'})
+
     def test_kerberos_preserves_realms_and_is_repeatable(self):
         text = '[libdefaults]\n default_realm = EXAMPLE.COM\n allow_weak_crypto = false\n[realms]\n EXAMPLE.COM = {\n  kdc = dc.example.com\n }\n'
         updated = m.kerberos_config(text)

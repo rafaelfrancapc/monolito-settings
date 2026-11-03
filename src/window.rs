@@ -1,5 +1,5 @@
 use crate::{
-    backends::{xfce::XfceBackend, SettingsBackend},
+    backends::{appearance::SystemAppearance, DesktopBackend},
     components::*,
     navigation::CATEGORIES,
     pages,
@@ -9,11 +9,18 @@ use crate::{
 use gtk::prelude::*;
 use std::{cell::RefCell, rc::Rc, sync::mpsc};
 pub fn build(app: &gtk::Application) -> gtk::ApplicationWindow {
-    let state = Rc::new(RefCell::new(Preferences::load()));
+    let appearance = (DesktopBackend::detect() == DesktopBackend::Cinnamon)
+        .then(SystemAppearance::detect)
+        .flatten();
+    let mut preferences = Preferences::load();
+    if let Some(system) = &appearance {
+        system.sync_preferences(&mut preferences);
+    }
+    let state = Rc::new(RefCell::new(preferences));
     let provider = theme::install(&state.borrow());
     let window = gtk::ApplicationWindow::builder()
         .application(app)
-        .title("Monolito Settings")
+        .title(crate::i18n::tr("Configurações"))
         .default_width(1100)
         .default_height(720)
         .build();
@@ -40,6 +47,8 @@ pub fn build(app: &gtk::Application) -> gtk::ApplicationWindow {
     let list = gtk::ListBox::new();
     list.add_css_class("nav-list");
     let stack = gtk::Stack::new();
+    stack.set_hhomogeneous(false);
+    stack.set_vhomogeneous(false);
     stack.set_hexpand(true);
     stack.set_vexpand(true);
     stack.set_transition_duration(200);
@@ -84,13 +93,13 @@ pub fn build(app: &gtk::Application) -> gtk::ApplicationWindow {
     let (system, system_body) = pages::system::build();
     stack.add_named(&system, Some("system"));
     stack.add_named(
-        &pages::personalization::build(state.clone(), provider.clone()),
+        &pages::personalization::build(state.clone(), provider.clone(), appearance),
         Some("personalization"),
     );
     stack.add_named(&pages::accounts::build(), Some("accounts"));
     for c in CATEGORIES {
         if !["home", "system", "personalization", "accounts"].contains(&c.id) {
-            stack.add_named(&pages::placeholder(c), Some(c.id));
+            stack.add_named(&pages::settings_page(c), Some(c.id));
         }
     }
     let weak = stack.downgrade();
@@ -107,10 +116,16 @@ pub fn build(app: &gtk::Application) -> gtk::ApplicationWindow {
             }
         }
     });
+    let settings_catalog = crate::backends::catalog::catalog();
     search.connect_search_changed(move |s| {
         let mut count = 0;
         for (c, r) in CATEGORIES.iter().zip(&rows) {
-            let found = crate::navigation::matches(c, &s.text());
+            let found = crate::navigation::matches(c, &s.text())
+                || settings_catalog.iter().any(|setting| {
+                    setting.category == c.id
+                        && crate::navigation::normalize(&crate::i18n::tr(&setting.title))
+                            .contains(&crate::navigation::normalize(&s.text()))
+                });
             r.set_visible(found);
             if found {
                 count += 1;
@@ -124,7 +139,7 @@ pub fn build(app: &gtk::Application) -> gtk::ApplicationWindow {
     window.set_child(Some(&shell));
     let (tx, rx) = mpsc::channel();
     std::thread::spawn(move || {
-        let _ = tx.send(XfceBackend.read_system());
+        let _ = tx.send(DesktopBackend::detect().read_system());
     });
     gtk::glib::timeout_add_local(std::time::Duration::from_millis(100), move || {
         match rx.try_recv() {

@@ -14,7 +14,7 @@ case "${1:-}" in
     ;;
   build) docker exec monolito-dev sh -ec 'cargo fmt --check; cargo check --locked; cargo build --locked; cargo test --locked; python3 -m unittest discover -s tests -v' ;;
   gui)
-    test_binary=$(docker exec monolito-dev sh -c 'find target/debug/deps -maxdepth 1 -name "monolito_settings-*" -type f -executable | head -n 1')
+    test_binary=$(docker exec monolito-dev sh -c 'find target/debug/deps -maxdepth 1 -name "monolito_settings-*" -type f -executable -printf "%T@ %p\n" | sort -nr | head -n 1 | cut -d" " -f2-')
     test -n "$test_binary"
     docker exec -u 1000:1000 -e HOME=/home/monolito -e "MONOLITO_TEST_BINARY=/app/$test_binary" monolito-dev ./scripts/gui-test.sh
     ;;

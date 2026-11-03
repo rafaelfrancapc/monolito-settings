@@ -2,7 +2,6 @@
 window.monolito.solid-csd { border: 1px solid @border; padding: 0; box-shadow: none; }
 window.monolito { background: @canvas; color: @text; }
 .monolito .titlebar { background: @canvas; padding: 0; min-height: 38px; border: none; box-shadow: none; }
-.monolito .brand { font-family: 'Montserrat Alternates', Inter, sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0; }
 .monolito button { background: @primary; color: @text; border: 1px solid @border; border-radius: 8px; padding: 8px 16px; box-shadow: none; text-shadow: none; transition: background 150ms ease; }
 .monolito button:hover { background: @secondary; }
 .monolito button:active { background: @subtle; }
@@ -28,9 +27,13 @@ window.monolito { background: @canvas; color: @text; }
 .monolito .page-title { font-size: 28px; font-weight: 700; letter-spacing: -.5px; }
 .monolito .section-title { font-size: 18px; font-weight: 600; margin-top: 8px; }
 .monolito .secondary { color: @muted; font-size: .92em; }
-.monolito .settings-card { background: @primary; border: 1px solid @border; border-radius: 8px; }
+.monolito .settings-card { background: @primary; border: 1px solid alpha(@border, .35); border-radius: 8px; box-shadow: 0 1px 2px alpha(black, .035); }
 .monolito .settings-row { padding: 18px 20px; min-height: 40px; }
-.monolito .settings-card .settings-row + .settings-row { border-top: 1px solid @border; }
+.monolito .settings-card .settings-row + .settings-row { border-top: 1px solid alpha(@border, .25); }
+.monolito .settings-card > button { border: none; background: transparent; padding: 0; border-radius: 0; }
+.monolito .settings-card > button:hover { background: @secondary; }
+.monolito .settings-card > button:first-child { border-top-left-radius: 8px; border-top-right-radius: 8px; }
+.monolito .settings-card > button:last-child { border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
 .monolito .row-title { font-weight: 500; }
 .monolito .hero { padding: 24px; border-radius: 16px; background: @subtle; }
 .monolito .hero-title { font-size: 22px; font-weight: 600; }

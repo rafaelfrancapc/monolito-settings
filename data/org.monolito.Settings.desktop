@@ -1,9 +1,9 @@
 [Desktop Entry]
 Type=Application
-Name=Monolito Settings
-Name[pt_BR]=Configurações do Monolito
-Comment=Personalize your Monolito Desktop
-Comment[pt_BR]=Personalize seu Monolito Desktop
+Name=Settings
+Name[pt_BR]=Configurações
+Comment=Manage system and desktop settings
+Comment[pt_BR]=Gerencie as configurações do sistema e da área de trabalho
 Exec=monolito-settings
 Icon=org.monolito.Settings
 Terminal=false

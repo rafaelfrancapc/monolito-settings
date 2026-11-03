@@ -38,6 +38,18 @@ fn ui_workflow() {
     w.present();
     settle();
     let widgets = descendants(w.upcast_ref());
+    assert_eq!(w.title().as_deref(), Some("Configurações"));
+    for text in widgets
+        .iter()
+        .filter_map(|x| x.clone().downcast::<gtk::Label>().ok())
+    {
+        assert!(
+            !text.text().to_lowercase().contains("monolito settings"),
+            "Visible brand: {}",
+            text.text()
+        );
+        assert!(!text.text().contains("Em desenvolvimento"));
+    }
     let stack = widgets
         .iter()
         .find_map(|x| x.clone().downcast::<gtk::Stack>().ok())
@@ -62,11 +74,101 @@ fn ui_workflow() {
     search.set_text("sem-resultados");
     settle();
     assert!((0..11).all(|i| !list.row_at_index(i).unwrap().is_visible()));
+    search.set_text("Bluetooth");
+    settle();
+    assert!(list.row_at_index(2).unwrap().is_visible());
     search.set_text("");
     settle();
     assert!((0..11).all(|i| list.row_at_index(i).unwrap().is_visible()));
     stack.set_visible_child_name("personalization");
     settle();
+    if crate::backends::DesktopBackend::detect() == crate::backends::DesktopBackend::Cinnamon {
+        let mouse = crate::backends::desktop_settings::setting(
+            "org.cinnamon.desktop.peripherals.mouse",
+            "left-handed",
+            "b",
+        )
+        .unwrap();
+        let switch = widgets
+            .iter()
+            .filter_map(|w| w.clone().downcast::<gtk::Switch>().ok())
+            .find(|w| w.widget_name() == "org.cinnamon.desktop.peripherals.mouse/left-handed")
+            .unwrap();
+        mouse.set_boolean("left-handed", true).unwrap();
+        settle();
+        assert!(switch.is_active());
+        switch.set_active(false);
+        settle();
+        assert!(!mouse.boolean("left-handed"));
+        let settings = crate::backends::desktop_settings::setting(
+            "org.cinnamon.desktop.interface",
+            "font-name",
+            "s",
+        )
+        .expect("Cinnamon test schemas");
+        settings.set_string("font-name", "Sans 11").unwrap();
+        let violet = widgets
+            .iter()
+            .filter_map(|w| w.clone().downcast::<gtk::ToggleButton>().ok())
+            .find(|button| button.has_css_class("violet"))
+            .unwrap();
+        violet.set_active(true);
+        settle();
+        let accent =
+            crate::backends::desktop_settings::setting("org.x.apps.portal", "accent-rgb", "s")
+                .unwrap();
+        assert_eq!(accent.string("accent-rgb"), "#7040B0");
+        assert_eq!(
+            crate::backends::desktop_settings::setting(
+                "org.cinnamon.desktop.interface",
+                "gtk-theme",
+                "s"
+            )
+            .unwrap()
+            .string("gtk-theme"),
+            "Adwaita-Violet"
+        );
+        let icons = crate::backends::desktop_settings::setting(
+            "org.cinnamon.desktop.interface",
+            "icon-theme",
+            "s",
+        )
+        .unwrap();
+        icons.set_string("icon-theme", "External-Icons").unwrap();
+        let portal =
+            crate::backends::desktop_settings::setting("org.x.apps.portal", "accent-rgb", "s")
+                .unwrap();
+        portal.set_string("accent-rgb", "#217346").unwrap();
+        settle();
+        assert!(
+            widgets
+                .iter()
+                .filter_map(|w| w.clone().downcast::<gtk::FontButton>().ok())
+                .any(|f| f.font().as_deref() == Some("Sans 11")),
+            "External changes must update the native control"
+        );
+        assert!(widgets
+            .iter()
+            .filter_map(|w| w.clone().downcast::<gtk::Entry>().ok())
+            .any(|entry| entry.widget_name() == "system-theme-icons"
+                && entry.text() == "External-Icons"));
+        assert!(widgets
+            .iter()
+            .filter_map(|w| w.clone().downcast::<gtk::ToggleButton>().ok())
+            .any(|button| button.has_css_class("green") && button.is_active()));
+        assert!(crate::backends::desktop_settings::setting(
+            "org.cinnamon.desktop.interface",
+            "missing-key",
+            "b"
+        )
+        .is_none());
+        assert!(crate::backends::desktop_settings::setting(
+            "org.cinnamon.desktop.interface",
+            "font-name",
+            "b"
+        )
+        .is_none());
+    }
     for text in ["Escuro", "Claro", "Automático"] {
         let button = widgets
             .iter()
@@ -76,6 +178,37 @@ fn ui_workflow() {
         button.set_active(true);
         settle();
         assert!(button.is_active());
+        if crate::backends::DesktopBackend::detect() == crate::backends::DesktopBackend::Cinnamon {
+            let portal = crate::backends::desktop_settings::setting(
+                "org.x.apps.portal",
+                "color-scheme",
+                "s",
+            )
+            .unwrap();
+            let expected = match text {
+                "Escuro" => "prefer-dark",
+                "Claro" => "prefer-light",
+                _ => "default",
+            };
+            assert_eq!(portal.string("color-scheme"), expected);
+        }
+    }
+    if let Ok(directory) = std::env::var("MONOLITO_SCREENSHOT_DIR") {
+        std::fs::create_dir_all(&directory).unwrap();
+        for page in ["personalization", "accounts", "devices"] {
+            stack.set_visible_child_name(page);
+            settle();
+            let paintable = gtk::WidgetPaintable::new(Some(&w));
+            let snapshot = gtk::Snapshot::new();
+            paintable.snapshot(&snapshot, w.width() as f64, w.height() as f64);
+            let node = snapshot.to_node().unwrap();
+            let renderer = gtk::gsk::Renderer::for_surface(&w.surface().unwrap()).unwrap();
+            renderer
+                .render_texture(&node, None)
+                .save_to_png(std::path::Path::new(&directory).join(format!("{page}.png")))
+                .unwrap();
+            renderer.unrealize();
+        }
     }
     let control = |class: &str| {
         widgets

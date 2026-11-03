@@ -1,13 +1,11 @@
-# Monolito Settings
+# Configurações
 
 Painel de configurações nativo em **Rust + GTK4**, inspirado na organização visual
-do Windows 11 e preparado para o Monolito Desktop sobre XFCE/X11. Não usa WebView,
-libadwaita nem recursos gráficos proprietários. Esta é a primeira versão da interface,
-não uma substituição de toda a infraestrutura do XFCE.
+do Windows 11, com integração ao Cinnamon/Linux Mint e leitura de informações no XFCE.
+Não usa WebView nem libadwaita. O executável continua sendo `monolito-settings` e o
+identificador é `org.monolito.Settings`.
 
-![Personalização do Monolito](docs/screenshots/personalization-light.png)
-
-[Visual escuro](docs/screenshots/personalization-dark.png) · [Opções de Active Directory](docs/screenshots/accounts-options.png) · [Evidências de validação](docs/VALIDATION.md)
+[Cobertura e integração com Cinnamon](docs/CINNAMON_INTEGRATION.md) · [Validação](docs/VALIDATION.md)
 
 ## Compilar no Arch Linux
 
@@ -18,17 +16,8 @@ cargo run --locked
 ```
 
 Alternativamente, use Rust estável via rustup, evitando instalar dois toolchains sem
-necessidade. Requer Rust >= 1.83 e GTK >= 4.8. A marca utiliza **monolito**, em minúsculas, com Montserrat Alternates Bold.
-O instalador inclui a fonte, distribuída sob a SIL Open Font License. Para execução
-direta pelo Cargo, instale a fonte incluída antes de abrir o aplicativo:
-
-```sh
-install -Dm644 resources/fonts/MontserratAlternates-Bold.ttf \
-  ~/.local/share/fonts/monolito/MontserratAlternates-Bold.ttf
-fc-cache -f ~/.local/share/fonts/monolito
-```
-
-Há fallback de fontes para sistemas em que ela ainda não tenha sido instalada.
+necessidade. Requer Rust >= 1.83 e GTK >= 4.8. A interface usa Inter com fallback
+para as fontes disponíveis na sessão, sem fonte de marca.
 O ambiente informado pelo usuário (GTK 4.24.1 / XFCE 4.20 / xfwm4 4.20 / X11 / tema
 Chicago95) é compatível com as APIs escolhidas. A validação local utilizou GTK 4.18.6,
 Rust 1.85.1 e xfwm4 4.20.0 no Debian 13 em contêiner.
@@ -51,7 +40,18 @@ cargo build --release --locked
 sudo ./scripts/install.sh
 ```
 
-O instalador adiciona o executável, a entrada de menu, o ícone, a fonte da marca,
+Para gerar o pacote Debian:
+
+```sh
+./scripts/build-deb.sh
+sudo apt install ./dist/monolito-settings_0.2.0_amd64.deb
+```
+
+O pacote usa uma diversão reversível do `dpkg` para ocultar a entrada principal
+`cinnamon-settings.desktop`. O arquivo original é restaurado ao remover o pacote;
+os módulos do Cinnamon continuam disponíveis pelos acessos internos da aplicação.
+
+O instalador adiciona o executável, a entrada de menu e o ícone,
 o auxiliar de domínio e a política polkit. Não instala dependências e não substitui o painel original.
 Para empacotamento, `DESTDIR=/caminho ./scripts/install.sh` permite montar uma árvore
 de pacote. Em produção, os arquivos instalados devem pertencer a root, e o auxiliar
@@ -66,25 +66,37 @@ checkout gravável pelo usuário como destino de uma política polkit.
 - Decoração própria com `GtkWindowHandle`, minimizar, maximizar/restaurar e fechar.
   O GTK/GDK cuida de arraste e duplo clique, sem manipulação manual de coordenadas.
 - Navegação por `GtkStack`, rolagem por página, atalhos reais no Início e foco por teclado.
-- Temas claro, escuro e automático; quatro cores de destaque; fonte e tema de ícones.
-  Essas preferências são **do aplicativo**, persistidas em
-  `$XDG_CONFIG_HOME/monolito/settings.json` (fallback `~/.config`).
-- Automático acompanha o nome do tema GTK e `gtk-application-prefer-dark-theme`.
-  Não consulta ainda o portal `org.freedesktop.appearance`.
+- No Cinnamon, modos claro/escuro/automático e accent color usam o portal XApp;
+  tema GTK, ícones, cursor e fonte usam `org.cinnamon.desktop.interface`.
+  Famílias descritas em `styles.d` são trocadas como um conjunto coordenado.
+  Alterações externas atualizam a interface. Fora do Cinnamon, o aplicativo mantém
+  fallback local em `$XDG_CONFIG_HOME/monolito/settings.json`.
 - CSS com cores semânticas, ícones SVG originais incorporados e fontes com fallback.
   A fonte padrão de 10,5 pt corresponde a 14 px em 96 DPI e respeita a escala GTK.
 - Início/Sistema leem hostname, distribuição, kernel, CPU, memória e sessão reais.
-- Backend XFCE lê `/Net/ThemeName`, `/Net/IconThemeName` e `/Gtk/FontName` do canal
+- O backend é selecionado por `XDG_CURRENT_DESKTOP`. No XFCE, lê `/Net/ThemeName`,
+  `/Net/IconThemeName` e `/Gtk/FontName` do canal
   `xsettings` via `xfconf-query` (cliente da API xfconf/D-Bus), com limite de tempo.
-  Ausência de serviços é apresentada explicitamente. Não há escrita em xfconf nesta versão.
-- Contas: usuário atual, descoberta AD, consulta de vínculo e ingresso via auxiliar polkit.
+  No Cinnamon, lê tema GTK, tema de ícones e fonte de
+  `org.cinnamon.desktop.interface` via GSettings. Ausência de serviços é apresentada
+  explicitamente. Controles diretos usam GIO/GSettings com validação de esquema/chave/tipo
+  e sincronização de alterações externas.
+- Contas: todos os usuários locais (sem enumerar contas AD), gerenciamento pelo utilitário
+  nativo, hostname via D-Bus/polkit, descoberta AD, consulta de vínculo e ingresso.
 - Animações seguem `gtk-enable-animations`. Interface inicial em pt_BR, com caminho
   gettext para outros idiomas (`po/`).
 
-Dispositivos, Rede, Aplicativos, Hora e Idioma, Acessibilidade, Segurança e Atualizações
-são páginas estruturadas **em desenvolvimento**. Seus ajustes não fingem aplicar
-configurações reais. NetworkManager, BlueZ, gerenciador de pacotes e edição das contas
-locais permanecem para versões posteriores.
+Todas as categorias contêm acessos funcionais aos componentes instalados do Cinnamon/Mint.
+Notificações, mouse/touchpad, fonte do desktop, efeitos, acessibilidade e privacidade
+têm controles diretos. Recursos avançados abrem o módulo ou aplicativo nativo específico.
+Componentes ausentes são identificados; módulos adicionais instalados são descobertos
+automaticamente. A pesquisa também localiza os recursos dentro das categorias.
+Hora e Idioma abre `mintlocale` ou o seletor de idiomas disponível, que instala os
+language packs atuais dos repositórios configurados pela distribuição.
+
+O inventário técnico, a matriz de integrações e o plano de substituição progressiva do
+centro de configurações do Cinnamon estão em [`docs/CINNAMON_INTEGRATION.md`](docs/CINNAMON_INTEGRATION.md).
+O painel original deve permanecer instalado e acessível até a homologação de cada módulo.
 
 ## Active Directory
 
@@ -103,11 +115,12 @@ distribuição; o auxiliar não sobrescreve essa política. Criação automátic
 home também depende da configuração PAM da distribuição. Ingresso não garante que
 uma sessão gráfica de usuário AD possa iniciar sem essas etapas.
 
-Em **Contas → Acessar trabalho ou escola**:
+Em **Contas → Domínio corporativo**:
 
-1. Informe o domínio DNS e use **Localizar domínio** para verificar a descoberta.
+1. Se necessário, altere o nome do computador e clique em **Aplicar nome**.
+   Depois informe o domínio DNS e use **Localizar domínio** para verificar a descoberta.
 2. Informe administrador e senha do domínio.
-3. Escolha, se necessário, as duas opções abaixo e confirme o ingresso.
+3. Escolha, se necessário, as opções abaixo e confirme o ingresso.
 4. Clique em **Ingressar no domínio** e autentique um administrador **local** no polkit.
 5. Consulte o vínculo atual; encerre a sessão antes de testar uma conta do domínio.
 
@@ -121,6 +134,9 @@ As opções vêm desmarcadas:
   computador todo e reduz a proteção; não define tipos de cifra nem restaura algoritmos
   removidos pelo MIT Kerberos ou bloqueados por políticas criptográficas da distribuição.
   Desmarcada, preserva a política Kerberos já existente.
+- **RC4 (arcfour):** grava `allow_rc4 = true` em `[libdefaults]`, separadamente da
+  opção anterior. Requer suporte do Kerberos (MIT 1.21+) e não modifica a lista de
+  cifras permitidas nem supera políticas do sistema. Desmarcada, preserva o arquivo.
 
 A interface nunca roda como root. O auxiliar usa argumentos fixos, validação estrita,
 stdin para a senha e subprocessos sem shell. Não registra credenciais nem repassa a
@@ -150,6 +166,7 @@ cargo fmt --check
 cargo check --locked
 cargo test --locked
 python3 -m unittest discover -s tests -v
+dbus-run-session -- cargo test --locked hostname_service_contract -- --ignored
 ```
 
 Os dois testes de transação que verificam propriedade root dos backups devem rodar

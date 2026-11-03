@@ -11,6 +11,7 @@ pub struct JoinRequest {
     pub password: String,
     pub unqualified_names: bool,
     pub allow_weak_crypto: bool,
+    pub allow_rc4: bool,
 }
 pub fn valid_domain(s: &str) -> bool {
     s.len() <= 253
@@ -62,7 +63,7 @@ pub fn join(request: JoinRequest) -> Result<String, String> {
     } else if out.status.code() == Some(10) {
         Err("O ingresso ocorreu, mas a configuração local falhou. Consulte o administrador antes de tentar novamente; o computador pode já pertencer ao domínio.".into())
     } else {
-        Err("Ingresso não concluído. Verifique autorização, credenciais, DNS, horário e dependências. Nenhuma senha foi registrada.".into())
+        Err("Ingresso não concluído. Verifique autorização, credenciais, DNS e horário.".into())
     }
 }
 #[cfg(test)]

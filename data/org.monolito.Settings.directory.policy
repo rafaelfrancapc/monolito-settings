@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE policyconfig PUBLIC "-//freedesktop//DTD PolicyKit Policy Configuration 1.0//EN" "http://www.freedesktop.org/standards/PolicyKit/1/policyconfig.dtd">
 <policyconfig>
-  <vendor>Monolito Desktop</vendor>
+  <vendor>Configurações</vendor>
   <action id="org.monolito.Settings.directory">
     <description>Join this computer to an Active Directory domain</description>
     <description xml:lang="pt_BR">Ingressar este computador em um domínio Active Directory</description>

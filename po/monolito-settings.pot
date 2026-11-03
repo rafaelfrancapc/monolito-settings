@@ -3,39 +3,87 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Language: \n"
 
-#: src/pages/accounts.rs:97
-msgid "A autorização de administrador local será solicitada pelo sistema."
-msgstr ""
-
-#: src/backends/directory.rs:58
+#: src/backends/directory.rs:59
 msgid "A autorização foi cancelada ou recusada."
 msgstr ""
 
-#: src/pages/accounts.rs:35
+#: src/backends/appearance.rs:192
+msgid "A cor de destaque está bloqueada pelo sistema."
+msgstr ""
+
+#: src/backends/appearance.rs:180
+msgid "A família de temas atual não oferece este modo."
+msgstr ""
+
+#: src/backends/appearance.rs:199
+msgid "A família de temas atual não oferece variações de cor."
+msgstr ""
+
+#: src/pages/accounts.rs:40
 msgid "A operação foi interrompida."
 msgstr ""
 
-#: src/pages/accounts.rs:82
-msgid "Aceitar criptografia legada (allow_weak_crypto)"
+#: src/backends/appearance.rs:166
+msgid "A preferência de modo está bloqueada pelo sistema."
 msgstr ""
 
-#: src/pages/accounts.rs:54
-msgid "Acessar trabalho ou escola"
+#: src/backends/catalog.rs:458 src/pages/integrations.rs:122
+msgid "Abrir no aplicativo do sistema"
+msgstr ""
+
+#: src/pages/integrations.rs:121
+msgid "Abrir ↗"
+msgstr ""
+
+#: src/pages/accounts.rs:99
+msgid "Aceitar criptografia legada (allow_weak_crypto)"
 msgstr ""
 
 #: src/pages/home.rs:28
 msgid "Acesso à organização"
 msgstr ""
 
-#: src/pages/accounts.rs:57
+#: src/pages/accounts.rs:65
 msgid "Active Directory"
 msgstr ""
 
-#: src/pages/accounts.rs:72 src/pages/accounts.rs:73
+#: src/pages/accounts.rs:89 src/pages/accounts.rs:90
 msgid "Administrador do domínio"
 msgstr ""
 
-#: src/pages/personalization.rs:36
+#: src/backends/catalog.rs:318
+msgid "Administração do sistema"
+msgstr ""
+
+#: src/backends/catalog.rs:166
+msgid "Ajuste e encaixe de janelas"
+msgstr ""
+
+#: src/backends/catalog.rs:46
+msgid "Alertas e comportamento das notificações"
+msgstr ""
+
+#: src/pages/integrations.rs:84
+msgid "Alto contraste"
+msgstr ""
+
+#: src/pages/integrations.rs:90
+msgid "Ampliador de tela"
+msgstr ""
+
+#: src/pages/integrations.rs:78
+msgid "Animação ao iniciar a sessão"
+msgstr ""
+
+#: src/pages/integrations.rs:60
+msgid "Animações da interface"
+msgstr ""
+
+#: src/backends/catalog.rs:124
+msgid "Animações e transições"
+msgstr ""
+
+#: src/pages/personalization.rs:42
 msgid "Aparência"
 msgstr ""
 
@@ -43,75 +91,175 @@ msgstr ""
 msgid "Aparência da interface"
 msgstr ""
 
-#: src/pages/mod.rs:26
-msgid "Aplicativos instalados"
+#: src/pages/personalization.rs:22
+msgid "Aparência do sistema e da interface."
+msgstr ""
+
+#: src/pages/accounts.rs:77
+msgid "Aplicar nome"
 msgstr ""
 
 #: src/navigation.rs:44
 msgid "Aplicativos instalados e associações de arquivos."
 msgstr ""
 
-#: src/pages/mod.rs:27
+#: src/backends/catalog.rs:189
+msgid "Aplicativos na inicialização"
+msgstr ""
+
+#: src/backends/catalog.rs:183
 msgid "Aplicativos padrão"
 msgstr ""
 
-#: src/pages/mod.rs:27
-msgid "Associações de arquivos"
+#: src/backends/catalog.rs:112
+msgid "Aplicativos, ícones, cursor e área de trabalho"
+msgstr ""
+
+#: src/pages/accounts.rs:155
+msgid "Aplique o nome do computador antes de ingressar no domínio."
+msgstr ""
+
+#: src/backends/catalog.rs:220
+msgid "Arquivos recentes e histórico"
+msgstr ""
+
+#: src/pages/personalization.rs:33
+msgid "As alterações acompanham as preferências da sessão."
+msgstr ""
+
+#: src/backends/catalog.rs:184
+msgid "Associações e mídias removíveis"
+msgstr ""
+
+#: src/pages/accounts.rs:57
+msgid "Atualizar usuários"
 msgstr ""
 
 #: src/navigation.rs:72
 msgid "Atualizações"
 msgstr ""
 
-#: src/pages/mod.rs:45
-msgid "Atualizações do sistema"
+#: src/pages/personalization.rs:64
+msgid "Automático"
 msgstr ""
 
-#: src/pages/personalization.rs:52
-msgid "Automático"
+#: src/backends/catalog.rs:76
+msgid "Ações de deslizar, pinçar e tocar"
+msgstr ""
+
+#: src/backends/catalog.rs:195
+msgid "Ações do gerenciador de arquivos"
+msgstr ""
+
+#: src/backends/catalog.rs:178
+msgid "Ações nos cantos da tela"
+msgstr ""
+
+#: src/pages/integrations.rs:66
+msgid "Barras de rolagem sobrepostas"
+msgstr ""
+
+#: src/pages/integrations.rs:114
+msgid "Bloquear ao ativar a proteção de tela"
+msgstr ""
+
+#: src/backends/catalog.rs:226
+msgid "Bloqueio automático e proteção da sessão"
+msgstr ""
+
+#: src/backends/catalog.rs:225
+msgid "Bloqueio de tela"
 msgstr ""
 
 #: src/navigation.rs:26
 msgid "Bluetooth, impressoras e dispositivos conectados."
 msgstr ""
 
+#: src/backends/catalog.rs:64
+msgid "Botões, rolagem e sensibilidade"
+msgstr ""
+
+#: src/backends/catalog.rs:82
+msgid "Caneta e calibração"
+msgstr ""
+
+#: src/backends/catalog.rs:177
+msgid "Cantos ativos"
+msgstr ""
+
 #: src/pages/home.rs:12
 msgid "Carregando informações…"
 msgstr ""
 
-#: src/pages/personalization.rs:44
-msgid "Claro, escuro ou conforme a preferência GTK da sessão"
+#: src/backends/catalog.rs:235
+msgid "Central completa do Cinnamon"
 msgstr ""
 
-#: src/pages/mod.rs:16
-msgid "Conectar e gerenciar dispositivos"
+#: src/backends/cinnamon.rs:26
+msgid "Cinnamon / GSettings"
 msgstr ""
 
-#: src/pages/mod.rs:22
-msgid "Conexões de trabalho"
+#: src/pages/personalization.rs:55
+msgid "Claro, escuro ou conforme a preferência do sistema"
+msgstr ""
+
+#: src/pages/accounts.rs:101
+msgid "Compatibilidade RC4 (arcfour)"
+msgstr ""
+
+#: src/backends/catalog.rs:148
+msgid "Complementos da área de trabalho"
+msgstr ""
+
+#: src/backends/catalog.rs:142
+msgid "Complementos do painel"
+msgstr ""
+
+#: src/pages/integrations.rs:125
+msgid "Componente não instalado"
+msgstr ""
+
+#: src/backends/catalog.rs:99
+msgid "Conexões de rede"
 msgstr ""
 
 #: src/navigation.rs:32
 msgid "Conexões, Wi-Fi e preferências de rede."
 msgstr ""
 
-#: src/window.rs:34
+#: src/backends/catalog.rs:476
+msgid "Configuração adicional do Cinnamon"
+msgstr ""
+
+#: src/backends/catalog.rs:519
+msgid "Configuração adicional instalada"
+msgstr ""
+
+#: src/app.rs:3 src/window.rs:23 src/window.rs:41
 msgid "Configurações"
 msgstr ""
 
-#: src/pages/mod.rs:23
-msgid "Configurações de acesso à rede"
+#: src/backends/catalog.rs:260
+msgid "Configurações NVIDIA"
+msgstr ""
+
+#: src/pages/integrations.rs:130
+msgid "Configurações abertas no aplicativo do sistema."
+msgstr ""
+
+#: src/pages/integrations.rs:163
+msgid "Configurações do sistema"
 msgstr ""
 
 #: src/pages/home.rs:18
 msgid "Configurações principais"
 msgstr ""
 
-#: src/pages/accounts.rs:129
+#: src/pages/accounts.rs:150
 msgid "Confirme o ingresso antes de continuar."
 msgstr ""
 
-#: src/pages/accounts.rs:86
+#: src/pages/accounts.rs:108
 msgid "Confirmo o ingresso deste computador no domínio informado."
 msgstr ""
 
@@ -119,27 +267,51 @@ msgstr ""
 msgid "Consultando o sistema"
 msgstr ""
 
-#: src/pages/accounts.rs:151
+#: src/pages/accounts.rs:179
 msgid "Consultar vínculo atual"
 msgstr ""
 
-#: src/pages/accounts.rs:153
+#: src/pages/accounts.rs:181
 msgid "Consulte o domínio configurado neste computador."
+msgstr ""
+
+#: src/pages/accounts.rs:235
+msgid "Contas de sistema"
 msgstr ""
 
 #: src/pages/home.rs:29
 msgid "Contas e ingresso no Active Directory"
 msgstr ""
 
-#: src/pages/personalization.rs:79
-msgid "Cor aplicada aos itens selecionados e às ações principais"
+#: src/backends/catalog.rs:290
+msgid "Contas online"
 msgstr ""
 
-#: src/pages/personalization.rs:78
+#: src/pages/personalization.rs:86
+msgid "Cor coordenada com a família de temas do Cinnamon"
+msgstr ""
+
+#: src/pages/personalization.rs:85
 msgid "Cor de destaque"
 msgstr ""
 
-#: src/pages/mod.rs:30
+#: src/pages/personalization.rs:260
+msgid "Cor de destaque atualizada."
+msgstr ""
+
+#: src/pages/accounts.rs:104
+msgid "Criptografia legada reduz a segurança e depende do suporte Kerberos do sistema."
+msgstr ""
+
+#: src/pages/personalization.rs:149
+msgid "Cursor usado pela sessão"
+msgstr ""
+
+#: src/backends/catalog.rs:370
+msgid "Cópia de segurança"
+msgstr ""
+
+#: src/backends/catalog.rs:207
 msgid "Data e hora"
 msgstr ""
 
@@ -147,56 +319,140 @@ msgstr ""
 msgid "Data, hora, região e idiomas do sistema."
 msgstr ""
 
+#: src/backends/desktop_settings.rs:136
+msgid "Denied by test service"
+msgstr ""
+
+#: src/pages/integrations.rs:48
+msgid "Desativar touchpad ao digitar"
+msgstr ""
+
+#: src/backends/mod.rs:72
+msgid "Desktop não reconhecido; nenhuma configuração foi alterada."
+msgstr ""
+
+#: src/backends/catalog.rs:284
+msgid "Detalhes da conta"
+msgstr ""
+
+#: src/backends/catalog.rs:70
+msgid "Digitação, atalhos e layouts"
+msgstr ""
+
 #: src/navigation.rs:74
 msgid "Disponibilidade e gerenciamento de atualizações."
 msgstr ""
 
-#: src/pages/system.rs:18
+#: src/backends/catalog.rs:94
+msgid "Dispositivos e autorização"
+msgstr ""
+
+#: src/pages/system.rs:21
 msgid "Distribuição"
 msgstr ""
 
-#: src/pages/accounts.rs:66 src/pages/accounts.rs:67
+#: src/pages/accounts.rs:83 src/pages/accounts.rs:84
 msgid "Domínio"
 msgstr ""
 
-#: src/pages/mod.rs:36
-msgid "Efeitos visuais"
+#: src/pages/accounts.rs:62
+msgid "Domínio corporativo"
 msgstr ""
 
-#: src/pages/mod.rs:10
-msgid "Em desenvolvimento — estes ajustes ainda não estão disponíveis."
+#: src/pages/integrations.rs:72
+msgid "Efeitos de janela"
 msgstr ""
 
-#: src/backends/directory.rs:56
+#: src/backends/directory.rs:57
 msgid "Entrada indisponível"
 msgstr ""
 
-#: src/pages/mod.rs:34
-msgid "Escala da interface"
+#: src/pages/accounts.rs:98
+msgid "Entrar como usuario em vez de usuario@dominio."
 msgstr ""
 
-#: src/pages/personalization.rs:38
-msgid "Estas preferências afetam somente o Monolito Settings."
+#: src/backends/catalog.rs:171
+msgid "Espaços de trabalho"
 msgstr ""
 
-#: src/window.rs:133
+#: src/backends/cinnamon.rs:24
+msgid "Esquemas do Cinnamon não disponíveis nesta sessão."
+msgstr ""
+
+#: src/backends/appearance.rs:252
+msgid "Esta preferência está bloqueada pelo sistema."
+msgstr ""
+
+#: src/window.rs:148
 msgid "Este computador"
 msgstr ""
 
-#: src/pages/personalization.rs:115
+#: src/pages/integrations.rs:12
+msgid "Exibir notificações"
+msgstr ""
+
+#: src/backends/catalog.rs:153
+msgid "Extensões"
+msgstr ""
+
+#: src/backends/catalog.rs:196
+msgid "Extensões do menu de contexto"
+msgstr ""
+
+#: src/pages/personalization.rs:289
+msgid "Fonte atualizada."
+msgstr ""
+
+#: src/backends/cinnamon.rs:16 src/pages/personalization.rs:121
 msgid "Fonte da interface"
 msgstr ""
 
-#: src/pages/personalization.rs:116
-msgid "Fonte utilizada nos textos e controles"
+#: src/pages/personalization.rs:122
+msgid "Fonte utilizada pelo desktop e pelos aplicativos GTK"
+msgstr ""
+
+#: src/backends/catalog.rs:361
+msgid "Fontes de aplicativos"
+msgstr ""
+
+#: src/backends/catalog.rs:117
+msgid "Fontes do desktop"
+msgstr ""
+
+#: src/backends/catalog.rs:202
+msgid "Foto, nome e senha da conta atual"
 msgstr ""
 
 #: src/theme.rs:4
 msgid "GTK settings"
 msgstr ""
 
-#: src/pages/mod.rs:26
-msgid "Gerenciar programas"
+#: src/backends/catalog.rs:336
+msgid "Gerenciador de aplicativos"
+msgstr ""
+
+#: src/backends/catalog.rs:355
+msgid "Gerenciador de atualizações"
+msgstr ""
+
+#: src/backends/catalog.rs:254
+msgid "Gerenciador de drivers"
+msgstr ""
+
+#: src/backends/catalog.rs:342
+msgid "Gerenciador de pacotes"
+msgstr ""
+
+#: src/backends/catalog.rs:87
+msgid "Gerenciamento de cores"
+msgstr ""
+
+#: src/pages/accounts.rs:214
+msgid "Gerenciar ↗"
+msgstr ""
+
+#: src/backends/catalog.rs:58
+msgid "Hardware e versão do sistema"
 msgstr ""
 
 #: src/pages/home.rs:35
@@ -207,16 +463,16 @@ msgstr ""
 msgid "Hora e Idioma"
 msgstr ""
 
-#: src/pages/mod.rs:31
-msgid "Idioma de exibição e formatos"
+#: src/backends/catalog.rs:266
+msgid "Idiomas e pacotes de idioma"
 msgstr ""
 
-#: src/pages/mod.rs:31
-msgid "Idioma e região"
+#: src/backends/catalog.rs:106
+msgid "Imagens e apresentação de slides"
 msgstr ""
 
-#: src/pages/mod.rs:17
-msgid "Impressoras e scanners"
+#: src/backends/catalog.rs:306
+msgid "Impressões digitais"
 msgstr ""
 
 #: src/pages/home.rs:34
@@ -227,44 +483,44 @@ msgstr ""
 msgid "Informações do dispositivo, sistema operacional e sessão gráfica."
 msgstr ""
 
-#: src/backends/directory.rs:28
+#: src/backends/catalog.rs:57
+msgid "Informações do sistema"
+msgstr ""
+
+#: src/backends/directory.rs:29
 msgid "Informe um domínio DNS válido, como empresa.exemplo.com"
 msgstr ""
 
-#: src/pages/accounts.rs:91
+#: src/pages/accounts.rs:113
 msgid "Ingressar no domínio"
 msgstr ""
 
-#: src/backends/directory.rs:61
+#: src/backends/directory.rs:62
 msgid "Ingresso concluído. Encerre a sessão antes de usar sua conta de domínio."
 msgstr ""
 
-#: src/pages/accounts.rs:58
+#: src/pages/accounts.rs:66
 msgid "Ingresso do dispositivo no domínio da organização."
 msgstr ""
 
-#: src/backends/directory.rs:65
-msgid "Ingresso não concluído. Verifique autorização, credenciais, DNS, horário e dependências. Nenhuma senha foi registrada."
+#: src/backends/directory.rs:66
+msgid "Ingresso não concluído. Verifique autorização, credenciais, DNS e horário."
 msgstr ""
 
-#: src/pages/accounts.rs:103
-msgid "Instale o auxiliar Monolito e as dependências de domínio para habilitar o ingresso. Consulte o README."
+#: src/backends/cinnamon.rs:11
+msgid "Integração com Cinnamon"
 msgstr ""
 
-#: src/pages/mod.rs:21
-msgid "Integração com NetworkManager prevista"
-msgstr ""
-
-#: src/pages/system.rs:33
+#: src/backends/xfce.rs:6
 msgid "Integração com XFCE"
 msgstr ""
 
-#: src/pages/mod.rs:46
-msgid "Integração com o gerenciador de pacotes prevista"
+#: src/pages/accounts.rs:122
+msgid "Integração de domínio não instalada."
 msgstr ""
 
-#: src/pages/mod.rs:42
-msgid "Integração prevista"
+#: src/backends/mod.rs:70
+msgid "Integração do desktop"
 msgstr ""
 
 #: src/state.rs:16
@@ -275,124 +531,240 @@ msgstr ""
 msgid "Início"
 msgstr ""
 
-#: src/pages/system.rs:8
+#: src/backends/catalog.rs:296
+msgid "Janela de início de sessão"
+msgstr ""
+
+#: src/pages/integrations.rs:102
+msgid "Leitor de tela"
+msgstr ""
+
+#: src/pages/integrations.rs:108
+msgid "Lembrar arquivos recentes"
+msgstr ""
+
+#: src/pages/system.rs:9
 msgid "Lendo informações do sistema…"
 msgstr ""
 
-#: src/pages/accounts.rs:90
+#: src/pages/accounts.rs:112
 msgid "Localizar domínio"
+msgstr ""
+
+#: src/pages/integrations.rs:36
+msgid "Localizar ponteiro com Ctrl"
+msgstr ""
+
+#: src/backends/catalog.rs:32
+msgid "Luz noturna"
 msgstr ""
 
 #: src/components/window_controls.rs:7
 msgid "Maximizar ou restaurar"
 msgstr ""
 
-#: src/pages/system.rs:21
+#: src/pages/system.rs:24
 msgid "Memória total"
 msgstr ""
 
-#: src/window.rs:16
-msgid "Monolito Settings"
+#: src/backends/catalog.rs:81
+msgid "Mesa digitalizadora"
 msgstr ""
 
-#: src/pages/mod.rs:18
+#: src/backends/catalog.rs:201
+msgid "Minha conta"
+msgstr ""
+
+#: src/pages/personalization.rs:54
+msgid "Modo de cor"
+msgstr ""
+
+#: src/pages/personalization.rs:231
+msgid "Modo de cor atualizado."
+msgstr ""
+
+#: src/backends/catalog.rs:63
 msgid "Mouse e touchpad"
 msgstr ""
 
-#: src/pages/accounts.rs:25
+#: src/pages/integrations.rs:24
+msgid "Mouse para canhotos"
+msgstr ""
+
+#: src/backends/catalog.rs:272
+msgid "Método de entrada"
+msgstr ""
+
+#: src/pages/accounts.rs:30
 msgid "Nenhum domínio configurado."
 msgstr ""
 
-#: src/window.rs:79
+#: src/window.rs:88
 msgid "Nenhuma categoria encontrada"
 msgstr ""
 
-#: src/pages/system.rs:17
+#: src/pages/accounts.rs:231
+msgid "Nenhuma conta de usuário local"
+msgstr ""
+
+#: src/pages/accounts.rs:74 src/pages/accounts.rs:75
+msgid "Nome do computador"
+msgstr ""
+
+#: src/backends/desktop_settings.rs:89
+msgid "Nome do computador atualizado."
+msgstr ""
+
+#: src/pages/system.rs:20
 msgid "Nome do dispositivo"
 msgstr ""
 
-#: src/pages/personalization.rs:139
-msgid "Nome do tema de ícones"
+#: src/backends/desktop_settings.rs:158
+msgid "Nome permanente alterado"
 msgstr ""
 
-#: src/pages/system.rs:26 src/pages/mod.rs:51
+#: src/backends/desktop_settings.rs:67
+msgid "Nome permanente alterado, mas o nome ativo não foi confirmado. Aplique novamente antes do ingresso."
+msgstr ""
+
+#: src/backends/catalog.rs:45
+msgid "Notificações"
+msgstr ""
+
+#: src/pages/integrations.rs:18
+msgid "Notificações em tela cheia"
+msgstr ""
+
+#: src/pages/system.rs:29
 msgid "Não disponível"
 msgstr ""
 
-#: src/pages/accounts.rs:27
+#: src/backends/catalog.rs:428
+msgid "Não foi possível abrir as configurações. Verifique o componente instalado."
+msgstr ""
+
+#: src/backends/desktop_settings.rs:63
+msgid "Não foi possível alterar o nome. Verifique a autorização administrativa."
+msgstr ""
+
+#: src/pages/accounts.rs:32
 msgid "Não foi possível concluir"
 msgstr ""
 
-#: src/window.rs:145
+#: src/backends/local_accounts.rs:12
+msgid "Não foi possível consultar as contas locais."
+msgstr ""
+
+#: src/window.rs:160
 msgid "Não foi possível consultar o sistema."
 msgstr ""
 
-#: src/backends/directory.rs:51
+#: src/backends/directory.rs:52
 msgid "Não foi possível iniciar a autorização polkit."
 msgstr ""
 
-#: src/pages/personalization.rs:9
-msgid "Não foi possível salvar"
+#: src/pages/integrations.rs:173
+msgid "Não instalado"
 msgstr ""
 
-#: src/pages/mod.rs:37
-msgid "O aplicativo respeita a preferência GTK por animações"
+#: src/backends/catalog.rs:422
+msgid "O componente não está instalado nesta sessão."
 msgstr ""
 
-#: src/backends/directory.rs:63
+#: src/backends/directory.rs:64
 msgid "O ingresso ocorreu, mas a configuração local falhou. Consulte o administrador antes de tentar novamente; o computador pode já pertencer ao domínio."
 msgstr ""
 
-#: src/pages/accounts.rs:16
+#: src/backends/desktop_settings.rs:81
+msgid "O pedido foi enviado, mas não foi possível confirmar o nome atual."
+msgstr ""
+
+#: src/backends/desktop_settings.rs:46
+msgid "O serviço de nomes do computador está indisponível."
+msgstr ""
+
+#: src/backends/desktop_settings.rs:86
+msgid "O serviço não confirmou o nome solicitado."
+msgstr ""
+
+#: src/backends/appearance.rs:290
+msgid "O tema da área de trabalho está bloqueado pelo sistema."
+msgstr ""
+
+#: src/pages/accounts.rs:21
 msgid "Operação em andamento…"
 msgstr ""
 
-#: src/pages/personalization.rs:131
-msgid "Os ícones de navegação mantêm a identidade Monolito"
+#: src/backends/catalog.rs:172
+msgid "Organização das áreas de trabalho"
 msgstr ""
 
-#: src/navigation.rs:50 src/pages/accounts.rs:46
+#: src/backends/catalog.rs:165
+msgid "Organização de janelas"
+msgstr ""
+
+#: src/backends/catalog.rs:135
+msgid "Painéis"
+msgstr ""
+
+#: src/navigation.rs:50 src/pages/accounts.rs:51
 msgid "Perfil de usuário e acesso a organizações."
 msgstr ""
 
-#: src/pages/mod.rs:41
-msgid "Permissões de aplicativos"
+#: src/backends/catalog.rs:88
+msgid "Perfis de monitores e impressoras"
 msgstr ""
 
-#: src/pages/accounts.rs:81
-msgid "Permite entrar como usuario em vez de usuario@dominio. Nomes locais iguais podem causar ambiguidade."
-msgstr ""
-
-#: src/navigation.rs:36 src/pages/personalization.rs:13
+#: src/navigation.rs:36 src/pages/personalization.rs:22
 msgid "Personalização"
 msgstr ""
 
-#: src/window.rs:36 src/window.rs:38
+#: src/window.rs:43 src/window.rs:45
 msgid "Pesquisar configurações"
 msgstr ""
 
-#: src/backends/directory.rs:43
+#: src/backends/catalog.rs:105
+msgid "Plano de fundo"
+msgstr ""
+
+#: src/backends/catalog.rs:136
+msgid "Posição, tamanho e comportamento"
+msgstr ""
+
+#: src/backends/directory.rs:44
 msgid "Preencha domínio, administrador e senha."
 msgstr ""
 
-#: src/pages/accounts.rs:143
+#: src/pages/accounts.rs:171
 msgid "Preencha um domínio válido, administrador e senha."
 msgstr ""
 
-#: src/pages/mod.rs:17
-msgid "Preferências de impressão"
+#: src/pages/personalization.rs:48
+msgid "Preferências aplicadas somente a este aplicativo."
 msgstr ""
 
-#: src/pages/personalization.rs:8
-msgid "Preferências do aplicativo salvas."
+#: src/backends/catalog.rs:52
+msgid "Preferências da sessão e do compositor"
+msgstr ""
+
+#: src/pages/integrations.rs:159
+msgid "Preferências do desktop"
+msgstr ""
+
+#: src/backends/catalog.rs:190
+msgid "Programas iniciados com a sessão"
 msgstr ""
 
 #: src/navigation.rs:68
 msgid "Proteção, permissões e privacidade."
 msgstr ""
 
-#: src/pages/personalization.rs:25
+#: src/pages/personalization.rs:31
 msgid "Prévia da interface"
+msgstr ""
+
+#: src/backends/catalog.rs:154
+msgid "Recursos adicionais do Cinnamon"
 msgstr ""
 
 #: src/navigation.rs:62
@@ -403,82 +775,198 @@ msgstr ""
 msgid "Rede e Internet"
 msgstr ""
 
-#: src/pages/accounts.rs:84
-msgid "Reduz a proteção do Kerberos para compatibilidade com domínios antigos. Não reativa algoritmos removidos da biblioteca Kerberos."
+#: src/backends/catalog.rs:324
+msgid "Relatórios do sistema"
+msgstr ""
+
+#: src/backends/catalog.rs:208
+msgid "Relógio, fuso horário e calendário"
+msgstr ""
+
+#: src/backends/catalog.rs:27
+msgid "Resolução, escala e disposição das telas"
+msgstr ""
+
+#: src/backends/desktop_settings.rs:84
+msgid "Resposta inválida do serviço de nomes."
+msgstr ""
+
+#: src/backends/catalog.rs:367
+msgid "Restauração do sistema"
+msgstr ""
+
+#: src/pages/integrations.rs:30
+msgid "Rolagem natural do mouse"
+msgstr ""
+
+#: src/pages/integrations.rs:54
+msgid "Rolagem natural do touchpad"
+msgstr ""
+
+#: src/backends/catalog.rs:39
+msgid "Saída, entrada e volume dos aplicativos"
 msgstr ""
 
 #: src/navigation.rs:66
 msgid "Segurança"
 msgstr ""
 
-#: src/pages/accounts.rs:76 src/pages/accounts.rs:77
+#: src/pages/accounts.rs:216
+msgid "Selecione esta conta no gerenciador de usuários para alterar nome, senha e grupos"
+msgstr ""
+
+#: src/backends/appearance.rs:248
+msgid "Selecione um nome de tema válido."
+msgstr ""
+
+#: src/pages/accounts.rs:93 src/pages/accounts.rs:94
 msgid "Senha do administrador"
 msgstr ""
 
-#: src/backends/xfce.rs:34
+#: src/backends/xfce.rs:16
 msgid "Serviço xfconf indisponível nesta sessão"
 msgstr ""
 
-#: src/pages/system.rs:22
+#: src/backends/catalog.rs:330
+msgid "Serviços do sistema"
+msgstr ""
+
+#: src/pages/system.rs:25
 msgid "Sessão gráfica"
 msgstr ""
 
-#: src/pages/mod.rs:30
-msgid "Sincronização e fuso horário"
+#: src/pages/personalization.rs:46
+msgid "Sincronizado com as configurações do sistema."
 msgstr ""
 
-#: src/pages/mod.rs:34
-msgid "Tamanho do texto"
+#: src/backends/catalog.rs:41
+msgid "Suspensão, bateria e brilho"
 msgstr ""
 
-#: src/pages/personalization.rs:43
-msgid "Tema da interface"
+#: src/pages/integrations.rs:96
+msgid "Teclado na tela"
 msgstr ""
 
-#: src/pages/personalization.rs:130
+#: src/backends/cinnamon.rs:14
+msgid "Tema GTK"
+msgstr ""
+
+#: src/pages/personalization.rs:137
+msgid "Tema GTK usado pela sessão"
+msgstr ""
+
+#: src/pages/personalization.rs:309
+msgid "Tema atualizado."
+msgstr ""
+
+#: src/backends/cinnamon.rs:15 src/pages/personalization.rs:142
 msgid "Tema de ícones"
 msgstr ""
 
-#: src/pages/personalization.rs:156
-msgid "Tema de ícones não encontrado nas pastas padrão."
+#: src/pages/personalization.rs:148
+msgid "Tema do ponteiro"
+msgstr ""
+
+#: src/pages/personalization.rs:136
+msgid "Tema dos aplicativos"
 msgstr ""
 
 #: src/pages/home.rs:23
 msgid "Tema, cores e tipografia"
 msgstr ""
 
-#: src/navigation.rs:38 src/pages/personalization.rs:13
+#: src/navigation.rs:38
 msgid "Tema, cores e tipografia da interface."
 msgstr ""
 
-#: src/pages/accounts.rs:79
+#: src/backends/catalog.rs:111
+msgid "Temas do desktop"
+msgstr ""
+
+#: src/backends/catalog.rs:33
+msgid "Temperatura de cor e programação"
+msgstr ""
+
+#: src/backends/catalog.rs:118
+msgid "Tipografia, escala e renderização"
+msgstr ""
+
+#: src/pages/integrations.rs:42
+msgid "Tocar para clicar"
+msgstr ""
+
+#: src/backends/catalog.rs:160
+msgid "Título, foco, alternância e organização"
+msgstr ""
+
+#: src/pages/accounts.rs:96
 msgid "Usar nome de usuário não qualificado"
 msgstr ""
 
-#: src/pages/accounts.rs:50
-msgid "Usuário da sessão atual"
+#: src/backends/desktop_settings.rs:41
+msgid "Use até 15 letras, números ou hífens, começando e terminando com letra ou número."
 msgstr ""
 
-#: src/pages/mod.rs:18
-msgid "Velocidade e gestos"
+#: src/backends/appearance.rs:203
+msgid "Use o painel Temas para selecionar uma família com cores coordenadas."
 msgstr ""
 
-#: src/pages/personalization.rs:27
-msgid "Visualização do tema e da cor de destaque selecionados."
+#: src/backends/appearance.rs:172
+msgid "Use o painel Temas para selecionar uma família compatível com modos claro e escuro."
+msgstr ""
+
+#: src/backends/catalog.rs:278
+msgid "Usuários e grupos"
+msgstr ""
+
+#: src/pages/accounts.rs:52
+msgid "Usuários locais"
 msgstr ""
 
 #: src/navigation.rs:14 src/pages/home.rs:6
 msgid "Visão geral do dispositivo e acesso às configurações."
 msgstr ""
 
-#: src/pages/mod.rs:21
-msgid "Wi-Fi e Ethernet"
+#: src/backends/catalog.rs:214
+msgid "Visão, audição, digitação e mouse"
 msgstr ""
 
-#: src/backends/xfce.rs:32
-msgid "XFCE / xfconf"
+#: src/backends/catalog.rs:100
+msgid "Wi-Fi, Ethernet, VPN e proxy"
 msgstr ""
 
-#: src/window.rs:138
+#: src/backends/xfce.rs:14
+msgid "XFCE / xfconf (somente leitura nesta versão)"
+msgstr ""
+
+#: src/backends/desktop_settings.rs:155
+msgid "autorização"
+msgstr ""
+
+#: src/window.rs:153
 msgid "{}\n{} · {}"
+msgstr ""
+
+#: src/pages/accounts.rs:210
+msgid "{} · UID {}"
+msgstr ""
+
+#: src/pages/integrations.rs:171
+msgid "{} — {}"
+msgstr ""
+
+#: src/backends/catalog.rs:129
+msgid "Área de trabalho"
+msgstr ""
+
+#: src/backends/catalog.rs:130
+msgid "Ícones e disposição"
+msgstr ""
+
+#: src/pages/personalization.rs:143
+msgid "Ícones usados pelo desktop e pelos aplicativos"
+msgstr ""
+
+#: src/backends/desktop_settings.rs:108
+msgid "é"
 msgstr ""

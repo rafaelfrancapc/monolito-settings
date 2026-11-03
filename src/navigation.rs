@@ -89,7 +89,15 @@ pub fn normalize(s: &str) -> String {
         .collect()
 }
 pub fn matches(category: &Category, query: &str) -> bool {
-    normalize(&tr(category.title)).contains(&normalize(query))
+    let query = normalize(query);
+    normalize(&tr(category.title)).contains(&query)
+        || crate::backends::catalog::MODULES
+            .iter()
+            .any(|(_, group, title, description)| {
+                *group == category.id
+                    && normalize(&format!("{} {}", tr(title), tr(description))).contains(&query)
+            })
+        || crate::backends::catalog::search_category(category.id, &query)
 }
 #[cfg(test)]
 mod tests {
