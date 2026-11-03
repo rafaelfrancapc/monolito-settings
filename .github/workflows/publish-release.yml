@@ -17,7 +17,7 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - name: Obter repositório e tags
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -31,6 +31,7 @@ jobs:
           release_asset="monolito-settings_${release_tag#v}_amd64.deb"
           echo "tag=$release_tag" >> "$GITHUB_OUTPUT"
           echo "asset=$release_asset" >> "$GITHUB_OUTPUT"
+          echo "title=Configurações ${release_tag#v}" >> "$GITHUB_OUTPUT"
           if gh release view "$release_tag" --json assets --jq '.assets[].name' 2>/dev/null | grep -Fxq "$release_asset"; then
             echo "pending=false" >> "$GITHUB_OUTPUT"
           else
@@ -53,15 +54,13 @@ jobs:
 
       - name: Criar release ou anexar pacote
         if: steps.release.outputs.pending == 'true'
+        uses: softprops/action-gh-release@v2
         env:
-          GH_TOKEN: ${{ github.token }}
-          RELEASE_TAG: ${{ steps.release.outputs.tag }}
-          RELEASE_ASSET: ${{ steps.release.outputs.asset }}
-        run: |
-          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" "dist/$RELEASE_ASSET" --clobber
-          else
-            gh release create "$RELEASE_TAG" "dist/$RELEASE_ASSET" \
-              --verify-tag \
-              --title "Configurações ${RELEASE_TAG#v}" \
-              --notes-file "docs/releases/$RELEASE_TAG.md"
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag_name: ${{ steps.release.outputs.tag }}
+          name: ${{ steps.release.outputs.title }}
+          body_path: docs/releases/${{ steps.release.outputs.tag }}.md
+          files: dist/${{ steps.release.outputs.asset }}
+          fail_on_unmatched_files: true
+          overwrite_files: true
