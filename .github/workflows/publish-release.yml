@@ -63,8 +63,13 @@ jobs:
         run: |
           release_sha=$(sha256sum "dist/$RELEASE_ASSET" | cut -d ' ' -f 1)
           checksum_line=$(printf 'SHA-256: `%s`' "$release_sha")
-          sed -i "s|^SHA-256:.*|$checksum_line|" "docs/releases/$RELEASE_TAG.md"
-          grep -Fx "$checksum_line" "docs/releases/$RELEASE_TAG.md"
+          notes_file="docs/releases/$RELEASE_TAG.md"
+          if grep -q '^SHA-256:' "$notes_file"; then
+            sed -i "s|^SHA-256:.*|$checksum_line|" "$notes_file"
+          else
+            printf '\n%s\n' "$checksum_line" >> "$notes_file"
+          fi
+          grep -Fx "$checksum_line" "$notes_file"
 
       - name: Criar release ou anexar pacote
         if: steps.release.outputs.pending == 'true'
